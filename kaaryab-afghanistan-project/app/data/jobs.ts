@@ -1,31 +1,32 @@
-import { title } from "process";
-
 export const jobs = [
     {
         id: 1,
         title: "Frontend Developer",
-        company: "TechVision",
         location: "Kabul",
         type: "Full Time",
         salary: "$800 - $1200",
         category: "IT",
+        organization: "Kabul Tech Community",
+        deadline: "20 July 2026",
     },
     {
         id: 2,
         title: "Graphic Designer",
-        company: "Creative Studio",
         location: "Herat",
         type: "Part Time",
         salary: "$400 - $700",
         category: "Design",
+        organization: "Global Learning Foundation",
+        deadline: "10 August 2026",
     },
     {
         id: 3,
         title: "English Teacher",
-        company: "Bright Future School",
-        loaction: "Mazar",
+        location: "Mazar",
         type: "Full Time",
-        sarary: "$500 - $900",
+        salary: "$500 - $900",
         category: "Education",
+        organization: "Afghan IT Solutions",
+        deadline: "15 July 2026",
     }
 ]
