@@ -8,6 +8,23 @@ export const jobs = [
         category: "IT",
         organization: "Kabul Tech Community",
         deadline: "20 July 2026",
+        posted:"2 days ago",
+        experience: "2 years",
+
+    email:"jobs@ktc.af",
+
+    // image:"/images/sort.PNG",
+    
+         description:
+        "We are looking for a Frontend Developer with experience in React and Next.js to build modern web applications.",
+
+    requirements: [
+        "React.js",
+        "Next.js",
+        "Tailwind CSS",
+        "JavaScript / TypeScript",
+        "Git & GitHub"
+    ]
     },
     {
         id: 2,
@@ -18,6 +35,22 @@ export const jobs = [
         category: "Design",
         organization: "Global Learning Foundation",
         deadline: "10 August 2026",
+        posted:"2 days ago",
+        experience: "2 years",
+
+    email:"jobs@ktc.af",
+
+    // image:"/images/sort.PNG",
+         description:
+        "We are looking for a Frontend Developer with experience in React and Next.js to build modern web applications.",
+
+    requirements: [
+        "React.js",
+        "Next.js",
+        "Tailwind CSS",
+        "JavaScript / TypeScript",
+        "Git & GitHub"
+    ]
     },
     {
         id: 3,
@@ -28,5 +61,21 @@ export const jobs = [
         category: "Education",
         organization: "Afghan IT Solutions",
         deadline: "15 July 2026",
+        posted:"2 days ago",
+        experience: "2 years",
+
+    email:"jobs@ktc.af",
+
+    // image:"/images/frontend.jpg",
+         description:
+        "We are looking for a Frontend Developer with experience in React and Next.js to build modern web applications.",
+
+    requirements: [
+        "React.js",
+        "Next.js",
+        "Tailwind CSS",
+        "JavaScript / TypeScript",
+        "Git & GitHub"
+    ]
     }
 ]

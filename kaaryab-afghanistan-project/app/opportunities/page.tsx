@@ -58,6 +58,7 @@ export default function Opportunities(){
                         {jobs.map((job) =>(
                             <OpportunityCard
                             key={job.id}
+                            id={job.id}
                             title={job.title}
                             organization={job.organization}
                             category={job.category}
