@@ -1,6 +1,7 @@
 import { jobs } from "@/app/data/jobs";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import SaveOpportunityButton from "@/components/SaveOpportunityButton";
 
 type PageProps = {
     params: Promise<{
@@ -123,9 +124,11 @@ export default async function OpportunityDetailsPage({params,}:PageProps) {
             </section>
 
             <div className="mt-10 flex gap-4">
-                <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
+                {/* <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
                     Save Opportunity
-                </button>
+                </button> */}
+
+                <SaveOpportunityButton jobId={job.id} />
 
             </div>
             </div>
