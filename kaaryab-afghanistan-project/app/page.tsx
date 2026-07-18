@@ -8,10 +8,11 @@ export default function HomePage() {
   return(
     <main>
       <HeroSection />
-      <FeaturedOpportunities />
-      <CategoriesSection />
-      <StatisticsSection />
+       <FeaturedOpportunities />
+       <CategoriesSection />
+       <StatisticsSection />
       <CTASection />
     </main>
-  )
+       )
 }
+

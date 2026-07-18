@@ -13,7 +13,19 @@ export const jobs = [
 
     email:"jobs@ktc.af",
 
-    // image:"/images/sort.PNG",
+    image: "/images/frontend.jpg",
+
+featured: true,
+
+applyLink:
+"https://careers.example.com",
+
+tags: [
+    "React",
+    "Next.js",
+    "Tailwind",
+    "TypeScript"
+],
     
          description:
         "We are looking for a Frontend Developer with experience in React and Next.js to build modern web applications.",

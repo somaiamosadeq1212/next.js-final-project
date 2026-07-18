@@ -1,0 +1,55 @@
+"use client";
+
+import { navigation } from "../navigation";
+import NavItem from "./NavItem";
+import Button from "@/components/ui/Button";
+
+export default function DesktopNav() {
+    return (
+        <div
+            className="
+                hidden
+                lg:flex
+                lg:items-center
+                lg:justify-between
+                lg:flex-1
+                lg:ml-12
+            "
+        >
+            {/* Navigation Links */}
+
+            <nav
+                className="
+                    flex
+                    items-center
+                    gap-8
+                "
+                aria-label="Main Navigation"
+            >
+                {navigation.map((item) => (
+                    <NavItem
+                        key={item.href}
+                        href={item.href}
+                        label={item.label}
+                    />
+                ))}
+            </nav>
+
+            {/* Right Side */}
+
+            <div
+                className="
+                    flex
+                    items-center
+                    gap-4
+                "
+            >
+                <Button
+                    size="md"
+                >
+                    Post Opportunity
+                </Button>
+            </div>
+        </div>
+    );
+}

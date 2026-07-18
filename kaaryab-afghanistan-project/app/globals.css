@@ -1,1 +1,136 @@
 @import "tailwindcss";
+
+/* ============================= */
+/* Design Tokens */
+/* ============================= */
+
+:root {
+
+  /* Brand */
+
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+
+  /* Background */
+
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+
+  /* Text */
+
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+
+  /* Border */
+
+  --color-border: #e2e8f0;
+
+  /* Status */
+
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+
+  /* Radius */
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  /* Shadow */
+
+  --shadow-card:
+      0 4px 12px rgba(15,23,42,.06);
+
+  /* Transition */
+
+--transition-fast: 150ms;
+--transition-normal: 250ms;
+
+/* Hover Shadow */
+
+--shadow-hover:
+0 10px 25px rgba(15,23,42,.12);
+
+}
+
+.dark {
+
+  --color-background:#020617;
+
+  --color-surface:#0f172a;
+
+  --color-text:#f8fafc;
+
+  --color-text-muted:#94a3b8;
+
+  --color-border:#334155;
+
+  --shadow-card:
+      0 6px 18px rgba(0,0,0,.45);
+  --shadow-hover:
+      0 10px 25px rgba(0,0,0,.45);
+
+}
+
+/* Utilities */
+/* ============================= */
+
+@layer utilities{
+
+.bg-background{
+background:var(--color-background);
+}
+
+.bg-surface{
+background:var(--color-surface);
+}
+
+.text-primary{
+color:var(--color-primary);
+}
+
+.text-default{
+color:var(--color-text);
+}
+
+.text-muted{
+color:var(--color-text-muted);
+}
+
+.border-default{
+border-color:var(--color-border);
+}
+
+.shadow-card{
+box-shadow:var(--shadow-card);
+}
+
+.rounded-card{
+border-radius:var(--radius-lg);
+}
+
+.shadow-hover{
+box-shadow:var(--shadow-hover);
+}
+
+.bg-primary{
+  background:var(--color-primary);
+}
+
+.bg-primary-light{
+  background:var(--color-primary-light);
+}
+
+.bg-hero{
+  background:var(--hero-gradient);
+}
+
+.text-on-primary{
+  color:var(--color-on-primary);
+}
+
+}
+
+
+

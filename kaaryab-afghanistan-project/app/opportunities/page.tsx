@@ -1,14 +1,15 @@
 "use client";
 
-import OpportunityCard from "@/components/OpportunityCard";
+// import OpportunityCard from "@/components/opportunity/OpportunityCard";
 import { jobs } from "../data/jobs";
 import CTASection from "@/components/home/CTASection";
 import { useMemo, useState } from "react";
-import HeroSection from "@/components/home/HeroSection";
-import SearchBar from "@/components/SearchBar";
-import FilterBar from "@/components/FilterBar";
+import HeroSection from "@/components/opportunity/HeroSection";
+import SearchBar from "@/components/opportunity/SearchBar";
+import FilterBar from "@/components/opportunity/FilterBar";
 import CategoryTabs from "@/components/CategoryTabs";
 import OpportunityGrid from "@/components/OpportunityGrid";
+import ResultHeader from "@/components/opportunity/ResultHeader";
 
 export default function Opportunities(){
     const [search, setSearch] = useState("");
@@ -69,53 +70,53 @@ const locations = [
 ];
 
     return(
-        <main>
-            <section className="bg-blue-600 py-20 text-white">
-               
-                <HeroSection />
-            </section>
+        <main className="bg-background">
 
-            <section className="py-10">
-                
+    <HeroSection />
 
-                <SearchBar
-  search={search}
-  onSearch={setSearch}
-/>
+    <section className="container py-10 md:py-14">
+      <SearchBar
+        search={search}
+        onSearch={setSearch}
+      />
+    </section>
 
-            </section>
+    <section className="container">
+      <FilterBar
+        categories={categories}
+        types={types}
+        locations={locations}
+        selectedCategory={selectedCategory}
+        selectedType={selectedType}
+        selectedLocation={selectedLocation}
+        setSelectedCategory={setSelectedCategory}
+        setSelectedType={setSelectedType}
+        setSelectedLocation={setSelectedLocation}
+      />
+    </section>
 
-            <section className="py-14">
-                
-                <FilterBar
+    <section className="container mt-8">
+      <CategoryTabs
+        categories={categories}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+      />
+    </section>
 
-    categories={categories}
-    types={types}
-    locations={locations}
+    <section className="container mt-10 pb-20">
 
-    selectedCategory={selectedCategory}
-    selectedType={selectedType}
-    selectedLocation={selectedLocation}
+      <ResultHeader
+        total={filteredJobs.length}
+      />
 
-    setSelectedCategory={setSelectedCategory}
-    setSelectedType={setSelectedType}
-    setSelectedLocation={setSelectedLocation}
+      <OpportunityGrid
+        jobs={filteredJobs}
+      />
 
-/>
-                 <CategoryTabs
+    </section>
 
-    categories={categories}
+    <CTASection />
 
-    selectedCategory={selectedCategory}
-
-    setSelectedCategory={setSelectedCategory}
-
-/>
-                 <OpportunityGrid jobs={filteredJobs} />
-            </section>
-
-            <CTASection />
-
-        </main>
+  </main>
     )
 }

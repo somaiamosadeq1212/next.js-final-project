@@ -1,34 +1,45 @@
-const stats = [
-    {
-        number: "250+",
-        title: "Jobs",
-    },
-    {
-        number: "180+",
-        title: "Scholarships",
-    },
-    {
-        number: "120+",
-        title: "Internships",
-    },
-    {
-        number: "500+",
-        title: "Students",
-    },
-];
+import { getOpportunityData } from "@/lib/opportunities";
 
-export default function StatisticsSection(){
-    return(
-        <section className="bg-blue-600 py-20 text-white">
-            <div className="mx-auto grid max-w-7xl gap-10 px-6 text-center sm:grid-cols-2 lg:grid-cols-4">
-                {stats.map((stat) => (
-                    <div key={stat.title}>
-                        <h2 className="text-5xl font-bold">{stat.number}</h2>
-                        <p className="mt-2 text-xl">{stat.title}</p>
-                    </div>
-                ))}
+export default function StatisticsSection() {
+
+  const { statistics } = getOpportunityData();
+
+  return (
+
+    <section className="bg-background py-24">
+
+      <div className="mx-auto max-w-7xl px-6">
+
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+
+          {statistics.map((item) => (
+
+            <div
+              key={item.title}
+              className="rounded-card border border-default bg-surface p-8 text-center shadow-card transition hover:-translate-y-2 hover:shadow-hover"
+            >
+
+              <div className="text-5xl">
+                {item.icon}
+              </div>
+
+              <h2 className="mt-5 text-5xl font-bold text-default">
+                {item.value}
+              </h2>
+
+              <p className="mt-3 text-muted">
+                {item.title}
+              </p>
 
             </div>
-        </section>
-    );
+
+          ))}
+
+        </div>
+
+      </div>
+
+    </section>
+
+  );
 }

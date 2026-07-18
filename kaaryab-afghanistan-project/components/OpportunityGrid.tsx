@@ -1,4 +1,4 @@
-import OpportunityCard from "./OpportunityCard";
+import OpportunityCard from "./opportunity/OpportunityCard";
 import EmptyState from "./EmptyState";
 import { Job } from "@/app/data/jobs";
 
@@ -16,7 +16,7 @@ export default function OpportunityGrid({
         return <EmptyState />;
     }
     return(
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
             {jobs.map((job) =>(
                 <OpportunityCard 
                     key={job.id}
