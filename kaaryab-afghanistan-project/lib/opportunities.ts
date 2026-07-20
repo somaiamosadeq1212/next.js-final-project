@@ -28,6 +28,7 @@ export function getOpportunityData() {
   ).length;
 
   return {
+    jobs,
     total,
 
     featured: jobs.slice(0, 6),
