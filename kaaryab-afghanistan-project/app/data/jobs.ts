@@ -1,93 +1,754 @@
 export const jobs = [
-    {
-        id: 1,
-        title: "Frontend Developer",
-        location: "Kabul",
-        type: "Full Time",
-        salary: "$800 - $1200",
-        category: "IT",
-        organization: "Kabul Tech Community",
-        deadline: "20 July 2026",
-        posted:"2 days ago",
-        experience: "2 years",
-
-    email:"jobs@ktc.af",
-
+  {
+    id: 1,
+    title: "Frontend Developer",
+    organization: "Kabul Tech Community",
+    category: "Job",
+    location: "Kabul",
+    type: "Full Time",
+    salary: "$800 - $1200",
+    deadline: "20 August 2026",
+    posted: "2 days ago",
+    experience: "2 years",
+    email: "jobs@ktc.af",
     image: "/images/frontend.jpg",
-
-featured: true,
-
-applyLink:
-"https://careers.example.com",
-
-tags: [
-    "React",
-    "Next.js",
-    "Tailwind",
-    "TypeScript"
-],
-    
-         description:
-        "We are looking for a Frontend Developer with experience in React and Next.js to build modern web applications.",
-
+    featured: true,
+    applyUrl: "https://careers.example.com/frontend",
+    tags: ["IT", "React", "Next.js", "Tailwind"],
+    description:
+      "Develop modern web applications using React and Next.js.",
     requirements: [
-        "React.js",
-        "Next.js",
-        "Tailwind CSS",
-        "JavaScript / TypeScript",
-        "Git & GitHub"
-    ]
-    },
-    {
-        id: 2,
-        title: "Graphic Designer",
-        location: "Herat",
-        type: "Part Time",
-        salary: "$400 - $700",
-        category: "Design",
-        organization: "Global Learning Foundation",
-        deadline: "10 August 2026",
-        posted:"2 days ago",
-        experience: "2 years",
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Git",
+      "Tailwind CSS",
+    ],
+  },
 
-    email:"jobs@ktc.af",
-
-    // image:"/images/sort.PNG",
-         description:
-        "We are looking for a Frontend Developer with experience in React and Next.js to build modern web applications.",
-
+  {
+    id: 2,
+    title: "Backend Developer",
+    organization: "Afghan IT Solutions",
+    category: "Job",
+    location: "Herat",
+    type: "Full Time",
+    salary: "$900 - $1400",
+    deadline: "25 August 2026",
+    posted: "1 day ago",
+    experience: "3 years",
+    email: "career@aits.af",
+    image: "/images/backend.jpg",
+    featured: true,
+    applyUrl: "https://careers.example.com/backend",
+    tags: ["Node.js", "Express", "MongoDB"],
+    description:
+      "Build secure backend services and REST APIs.",
     requirements: [
-        "React.js",
-        "Next.js",
-        "Tailwind CSS",
-        "JavaScript / TypeScript",
-        "Git & GitHub"
-    ]
-    },
-    {
-        id: 3,
-        title: "English Teacher",
-        location: "Mazar",
-        type: "Full Time",
-        salary: "$500 - $900",
-        category: "Education",
-        organization: "Afghan IT Solutions",
-        deadline: "15 July 2026",
-        posted:"2 days ago",
-        experience: "2 years",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "REST API",
+      "Git",
+    ],
+  },
 
-    email:"jobs@ktc.af",
-
-    // image:"/images/frontend.jpg",
-         description:
-        "We are looking for a Frontend Developer with experience in React and Next.js to build modern web applications.",
-
+  {
+    id: 3,
+    title: "UI/UX Designer",
+    organization: "Creative Studio Afghanistan",
+    category: "Job",
+    location: "Mazar-e-Sharif",
+    type: "Part Time",
+    salary: "$500 - $800",
+    deadline: "30 August 2026",
+    posted: "Today",
+    experience: "2 years",
+    email: "jobs@creative.af",
+    image: "/images/design.jpg",
+    featured: false,
+    applyUrl: "https://careers.example.com/uiux",
+    tags: ["UI", "UX", "Figma"],
+    description:
+      "Design user-friendly interfaces for web and mobile.",
     requirements: [
-        "React.js",
-        "Next.js",
-        "Tailwind CSS",
-        "JavaScript / TypeScript",
-        "Git & GitHub"
-    ]
-    }
-]
+      "Figma",
+      "Wireframing",
+      "Prototyping",
+      "UI Design",
+    ],
+  },
+
+  {
+    id: 4,
+    title: "Digital Marketing Officer",
+    organization: "Bright Future Organization",
+    category: "Job",
+    location: "Kandahar",
+    type: "Full Time",
+    salary: "$600 - $900",
+    deadline: "18 August 2026",
+    posted: "3 days ago",
+    experience: "2 years",
+    email: "jobs@brightfuture.org",
+    image: "/images/marketing.jpg",
+    featured: false,
+    applyUrl: "https://careers.example.com/marketing",
+    tags: ["Marketing", "SEO", "Social Media"],
+    description:
+      "Manage online campaigns and digital marketing activities.",
+    requirements: [
+      "SEO",
+      "Google Analytics",
+      "Content Marketing",
+    ],
+  },
+
+  {
+    id: 5,
+    title: "Frontend Internship",
+    organization: "Code to Inspire",
+    category: "Internship",
+    location: "Herat",
+    type: "Hybrid",
+    salary: "Paid",
+    deadline: "15 August 2026",
+    posted: "Yesterday",
+    experience: "Fresh Graduate",
+    email: "internships@codetoinspire.org",
+    image: "/images/internship.jpg",
+    featured: true,
+    applyUrl: "https://careers.example.com/frontend-intern",
+    tags: ["React", "HTML", "CSS"],
+    description:
+      "Internship opportunity for aspiring frontend developers.",
+    requirements: [
+      "Basic HTML",
+      "CSS",
+      "JavaScript",
+    ],
+  },
+
+  {
+    id: 6,
+    title: "Data Analyst Internship",
+    organization: "UNDP Afghanistan",
+    category: "Internship",
+    location: "Kabul",
+    type: "Full Time",
+    salary: "Paid",
+    deadline: "22 August 2026",
+    posted: "Today",
+    experience: "Student",
+    email: "jobs@undp.org",
+    image: "/images/data.jpg",
+    featured: false,
+    applyUrl: "https://careers.example.com/data",
+    tags: ["Excel", "SQL", "Power BI"],
+    description:
+      "Support the analytics team in reporting and dashboards.",
+    requirements: [
+      "Excel",
+      "SQL",
+      "Analytical Thinking",
+    ],
+  },
+
+  {
+    id: 7,
+    title: "Women in STEM Scholarship",
+    organization: "Asian Development Bank",
+    category: "Scholarship",
+    location: "International",
+    type: "Full Time",
+    salary: "Fully Funded",
+    deadline: "10 September 2026",
+    posted: "4 days ago",
+    experience: "Bachelor Students",
+    email: "scholarships@adb.org",
+    image: "/images/scholarship.jpg",
+    featured: true,
+    applyUrl: "https://careers.example.com/stem",
+    tags: ["Scholarship", "STEM"],
+    description:
+      "Scholarship for female students pursuing STEM degrees.",
+    requirements: [
+      "Academic Excellence",
+      "English",
+    ],
+  },
+
+  {
+    id: 8,
+    title: "Master Scholarship 2027",
+    organization: "DAAD Germany",
+    category: "Scholarship",
+    location: "Germany",
+    type: "Full Time",
+    salary: "Fully Funded",
+    deadline: "30 September 2026",
+    posted: "1 week ago",
+    experience: "Bachelor Degree",
+    email: "info@daad.de",
+    image: "/images/daad.jpg",
+    featured: true,
+    applyUrl: "https://careers.example.com/daad",
+    tags: ["Germany", "Masters"],
+    description:
+      "Master scholarship for international students.",
+    requirements: [
+      "Bachelor Degree",
+      "IELTS",
+    ],
+  },
+
+  {
+    id: 9,
+    title: "React Complete Bootcamp",
+    organization: "Coursera",
+    category: "Online Course",
+    location: "Online",
+    type: "Remote",
+    salary: "Free",
+    deadline: "Open",
+    posted: "Today",
+    experience: "Beginner",
+    email: "support@coursera.org",
+    status: "Open",
+    image: "/images/course.jpg",
+    featured: false,
+    applyUrl: "https://coursera.org",
+    tags: ["React", "JavaScript"],
+    description:
+      "Learn React from beginner to advanced level.",
+    requirements: [
+      "Basic JavaScript",
+    ],
+  },
+
+  {
+    id: 10,
+    title: "Remote Customer Support",
+    organization: "Turing",
+    category: "Remote Work",
+    location: "Remote",
+    type: "Remote",
+    salary: "$700/month",
+    deadline: "12 September 2026",
+    posted: "Yesterday",
+    experience: "1 year",
+    email: "jobs@turing.com",
+    image: "/images/remote.jpg",
+    featured: true,
+    status: "Closing Soon",
+    applyUrl: "https://careers.example.com/remote",
+    tags: ["Communication", "English"],
+    description:
+      "Provide customer support while working remotely.",
+    requirements: [
+      "English",
+      "Communication Skills",
+      "Computer Literacy",
+    ],
+  },
+
+ {
+    id: 11,
+    title: "Mobile App Developer",
+    organization: "Afghan Digital Solutions",
+    category: "Job",
+    location: "Kabul",
+    type: "Full Time",
+    salary: "$900 - $1400",
+    deadline: "15 September 2026",
+    posted: "Today",
+    experience: "2 years",
+    email: "jobs@ads.af",
+    image: "/images/mobile.jpg",
+    featured: false,
+    applyUrl: "https://careers.example.com/mobile",
+    tags: ["Flutter", "Dart", "Android", "iOS"],
+    description:
+      "Develop cross-platform mobile applications using Flutter.",
+    requirements: [
+      "Flutter",
+      "Dart",
+      "REST API",
+      "Git"
+    ],
+  },
+
+  {
+    id: 12,
+    title: "Project Coordinator",
+    organization: "UNICEF Afghanistan",
+    category: "Job",
+    location: "Herat",
+    type: "Contract",
+    salary: "$1200 - $1700",
+    deadline: "18 September 2026",
+    posted: "2 days ago",
+    experience: "3 years",
+    email: "jobs@unicef.org",
+    image: "/images/project.jpg",
+    status: "Closed",
+    featured: true,
+    applyUrl: "https://careers.example.com/project",
+    tags: ["Management", "NGO", "Leadership"],
+    description:
+      "Coordinate education and community development projects.",
+    requirements: [
+      "Project Management",
+      "Communication",
+      "Leadership"
+    ],
+  },
+
+  {
+    id: 13,
+    title: "Cyber Security Internship",
+    organization: "Code to Inspire",
+    category: "Internship",
+    location: "Herat",
+    type: "Hybrid",
+    salary: "Paid",
+    deadline: "22 September 2026",
+    posted: "Today",
+    experience: "Student",
+    email: "internships@codetoinspire.org",
+    image: "/images/security.jpg",
+    featured: false,
+    applyUrl: "https://careers.example.com/security",
+    tags: ["Cyber Security", "Networking"],
+    description:
+      "Learn practical cyber security skills through mentorship.",
+    requirements: [
+      "Networking Basics",
+      "Linux",
+      "Problem Solving"
+    ],
+  },
+
+  {
+    id: 14,
+    title: "Data Science Scholarship",
+    organization: "Google",
+    category: "Scholarship",
+    location: "Online",
+    type: "Remote",
+    salary: "Fully Funded",
+    deadline: "30 September 2026",
+    posted: "Yesterday",
+    experience: "Undergraduate",
+    email: "scholarships@google.com",
+    image: "/images/google.jpg",
+    featured: true,
+    applyUrl: "https://careers.example.com/google-scholarship",
+    tags: ["AI", "Machine Learning", "Python"],
+    description:
+      "Scholarship program for future data scientists.",
+    requirements: [
+      "Python",
+      "Mathematics",
+      "English"
+    ],
+  },
+
+  {
+    id: 15,
+    title: "Digital Skills Bootcamp",
+    organization: "UNDP Afghanistan",
+    category: "Training Program",
+    location: "Kabul",
+    type: "Full Time",
+    salary: "Free",
+    deadline: "28 August 2026",
+    posted: "Today",
+    experience: "Beginner",
+    email: "training@undp.org",
+    image: "/images/training.jpg",
+    featured: false,
+    applyUrl: "https://careers.example.com/bootcamp",
+    tags: ["Digital Skills", "Career"],
+    description:
+      "Intensive training program for young professionals.",
+    requirements: [
+      "Computer Basics",
+      "Motivation"
+    ],
+  },
+
+  {
+    id: 16,
+    title: "Python for Everybody",
+    organization: "edX",
+    category: "Online Course",
+    location: "Online",
+    type: "Remote",
+    salary: "Free",
+    deadline: "28 August 2026",
+    posted: "Today",
+    experience: "Beginner",
+    email: "support@edx.org",
+    image: "/images/python.jpg",
+    featured: false,
+    applyUrl: "https://www.edx.org",
+    tags: ["Python", "Programming"],
+    description:
+      "Learn Python programming from beginner to advanced level.",
+    requirements: [
+      "Basic Computer Skills"
+    ],
+  },
+
+  {
+    id: 17,
+    title: "Community Volunteer",
+    organization: "Afghan Red Crescent",
+    category: "Volunteer Work",
+    location: "Bamyan",
+    type: "Part Time",
+    salary: "Volunteer",
+    deadline: "10 October 2026",
+    posted: "3 days ago",
+    experience: "None",
+    email: "volunteer@arcs.af",
+    image: "/images/volunteer.jpg",
+    featured: false,
+    applyUrl: "https://careers.example.com/volunteer",
+    tags: ["Community", "Health"],
+    description:
+      "Support community health awareness campaigns.",
+    requirements: [
+      "Teamwork",
+      "Communication"
+    ],
+  },
+
+  {
+    id: 18,
+    title: "Remote Content Writer",
+    organization: "Toptal",
+    category: "Remote Work",
+    location: "Remote",
+    type: "Remote",
+    salary: "$900/month",
+    deadline: "5 October 2026",
+    posted: "Yesterday",
+    experience: "1 year",
+    email: "jobs@toptal.com",
+    image: "/images/writer.jpg",
+    featured: true,
+    applyUrl: "https://careers.example.com/content",
+    tags: ["Writing", "SEO"],
+    description:
+      "Create engaging content for international clients.",
+    requirements: [
+      "English",
+      "SEO",
+      "Writing Skills"
+    ],
+  },
+
+  {
+    id: 19,
+    title: "Business Analyst",
+    organization: "Aga Khan Foundation",
+    category: "Job",
+    location: "Mazar-e-Sharif",
+    type: "Full Time",
+    salary: "$1000 - $1500",
+    deadline: "18 October 2026",
+    posted: "Today",
+    experience: "3 years",
+    email: "jobs@akdn.org",
+    image: "/images/business.jpg",
+    featured: true,
+    applyUrl: "https://careers.example.com/business",
+    tags: ["Business", "Analysis", "Excel"],
+    description:
+      "Analyze business processes and prepare reports.",
+    requirements: [
+      "Excel",
+      "Power BI",
+      "Communication"
+    ],
+  },
+
+  {
+    id: 20,
+    title: "UI Design Masterclass",
+    organization: "Udemy",
+    category: "Online Course",
+    location: "Online",
+    type: "Remote",
+    salary: "$19.99",
+    deadline: "28 August 2026",
+    posted: "Today",
+    experience: "Beginner",
+    email: "support@udemy.com",
+    image: "/images/ui-course.jpg",
+    featured: false,
+    applyUrl: "https://www.udemy.com",
+    tags: ["UI", "Figma", "Design"],
+    description:
+      "Master modern UI design with real-world projects.",
+    requirements: [
+      "Basic Computer Skills"
+    ],
+  },
+
+   {
+    id: 21,
+    title: "DevOps Engineer",
+    organization: "Afghan Cloud Services",
+    category: "Job",
+    location: "Kabul",
+    type: "Full Time",
+    salary: "$1200 - $1800",
+    deadline: "25 October 2026",
+    posted: "Today",
+    experience: "3 years",
+    email: "jobs@cloud.af",
+    image: "/images/devops.jpg",
+    featured: true,
+    applyUrl: "https://careers.example.com/devops",
+    tags: ["Docker", "Kubernetes", "CI/CD", "Linux"],
+    description:
+      "Build and maintain cloud infrastructure and deployment pipelines.",
+    requirements: [
+      "Docker",
+      "Kubernetes",
+      "Linux",
+      "GitHub Actions"
+    ],
+  },
+
+  {
+    id: 22,
+    title: "Human Resources Officer",
+    organization: "Save the Children",
+    category: "Job",
+    location: "Kandahar",
+    type: "Contract",
+    salary: "$900 - $1300",
+    deadline: "28 October 2026",
+    posted: "Yesterday",
+    experience: "2 years",
+    email: "jobs@savechildren.org",
+    image: "/images/hr.jpg",
+    featured: false,
+    applyUrl: "https://careers.example.com/hr",
+    tags: ["HR", "Recruitment", "Administration"],
+    description:
+      "Support recruitment and employee relations activities.",
+    requirements: [
+      "HR Experience",
+      "Communication",
+      "Microsoft Office"
+    ],
+  },
+
+  {
+    id: 23,
+    title: "Software Engineering Internship",
+    organization: "Microsoft Leap",
+    category: "Internship",
+    location: "Remote",
+    type: "Remote",
+    salary: "Paid",
+    deadline: "30 October 2026",
+    posted: "Today",
+    experience: "Student",
+    email: "internships@microsoft.com",
+    image: "/images/software-intern.jpg",
+    featured: true,
+    applyUrl: "https://careers.example.com/software-intern",
+    tags: ["C#", ".NET", "Azure"],
+    description:
+      "Gain hands-on experience building modern software solutions.",
+    requirements: [
+      "Programming Basics",
+      "Problem Solving",
+      "Git"
+    ],
+  },
+
+  {
+    id: 24,
+    title: "Women Leadership Scholarship",
+    organization: "Chevening",
+    category: "Scholarship",
+    location: "United Kingdom",
+    type: "Full Time",
+    salary: "Fully Funded",
+    deadline: "15 November 2026",
+    posted: "2 days ago",
+    experience: "Bachelor Degree",
+    email: "info@chevening.org",
+    image: "/images/chevening.jpg",
+    featured: true,
+    applyUrl: "https://careers.example.com/chevening",
+    tags: ["Leadership", "Masters", "UK"],
+    description:
+      "Scholarship for future leaders pursuing master's degrees.",
+    requirements: [
+      "Bachelor Degree",
+      "Leadership Experience",
+      "English"
+    ],
+  },
+
+  {
+    id: 25,
+    title: "AI Fundamentals",
+    organization: "Google Learning",
+    category: "Online Course",
+    location: "Online",
+    type: "Remote",
+    salary: "Free",
+    deadline: "15 October 2026",
+    posted: "Today",
+    experience: "Beginner",
+    email: "support@google.com",
+    image: "/images/ai-course.jpg",
+    featured: false,
+    applyUrl: "https://grow.google",
+    tags: ["AI", "Machine Learning", "Technology"],
+    description:
+      "Learn the fundamentals of Artificial Intelligence.",
+    requirements: [
+      "Basic Computer Skills"
+    ],
+  },
+
+  {
+    id: 26,
+    title: "NGO Management Training",
+    organization: "Aga Khan Foundation",
+    category: "Training Program",
+    location: "Herat",
+    type: "Full Time",
+    salary: "Free",
+    deadline: "20 November 2026",
+    posted: "Today",
+    experience: "1 year",
+    email: "training@akdn.org",
+    image: "/images/ngo-training.jpg",
+    featured: false,
+    applyUrl: "https://careers.example.com/ngo-training",
+    tags: ["Leadership", "NGO", "Management"],
+    description:
+      "Professional training for NGO managers and coordinators.",
+    requirements: [
+      "Communication",
+      "Leadership"
+    ],
+  },
+
+  {
+    id: 27,
+    title: "Education Volunteer",
+    organization: "UN Volunteers",
+    category: "Volunteer Work",
+    location: "Jalalabad",
+    type: "Part Time",
+    salary: "Volunteer",
+    deadline: "25 November 2026",
+    posted: "Yesterday",
+    experience: "None",
+    email: "volunteer@unv.org",
+    image: "/images/education-volunteer.jpg",
+    featured: false,
+    applyUrl: "https://careers.example.com/education-volunteer",
+    tags: ["Education", "Community"],
+    description:
+      "Volunteer to support community education initiatives.",
+    requirements: [
+      "Teamwork",
+      "Communication"
+    ],
+  },
+
+  {
+    id: 28,
+    title: "Remote Virtual Assistant",
+    organization: "Upwork",
+    category: "Remote Work",
+    location: "Remote",
+    type: "Remote",
+    salary: "$800/month",
+    deadline: "30 November 2026",
+    posted: "Today",
+    experience: "1 year",
+    email: "jobs@upwork.com",
+    image: "/images/assistant.jpg",
+    featured: true,
+    applyUrl: "https://careers.example.com/virtual-assistant",
+    tags: ["Virtual Assistant", "Communication", "Office"],
+    description:
+      "Support international clients remotely with administrative tasks.",
+    requirements: [
+      "English",
+      "Microsoft Office",
+      "Organization Skills"
+    ],
+  },
+
+  {
+    id: 29,
+    title: "Business Development Officer",
+    organization: "International Rescue Committee",
+    category: "Job",
+    location: "Kabul",
+    type: "Full Time",
+    salary: "$1100 - $1600",
+    deadline: "5 December 2026",
+    posted: "3 days ago",
+    experience: "3 years",
+    email: "jobs@rescue.org",
+    image: "/images/business-dev.jpg",
+    featured: true,
+    applyUrl: "https://careers.example.com/business-development",
+    tags: ["Business", "Partnership", "Strategy"],
+    description:
+      "Develop partnerships and identify new business opportunities.",
+    requirements: [
+      "Business Development",
+      "Negotiation",
+      "Communication"
+    ],
+  },
+
+  {
+    id: 30,
+    title: "Full Stack Developer",
+    organization: "Code to Inspire",
+    category: "Job",
+    location: "Herat",
+    type: "Hybrid",
+    salary: "$1000 - $1700",
+    deadline: "10 December 2026",
+    posted: "Today",
+    experience: "3 years",
+    email: "jobs@codetoinspire.org",
+    image: "/images/fullstack.jpg",
+    featured: true,
+    applyUrl: "https://careers.example.com/fullstack",
+    tags: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "TypeScript"
+    ],
+    description:
+      "Build full-stack web applications using modern technologies.",
+    requirements: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "MongoDB",
+      "Git"
+    ],
+  },
+];

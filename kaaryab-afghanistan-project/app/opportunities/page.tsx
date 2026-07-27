@@ -1,9 +1,8 @@
 "use client";
 
-// import OpportunityCard from "@/components/opportunity/OpportunityCard";
-import { jobs } from "../data/jobs";
+import { useEffect, useMemo, useState } from "react";
+
 import CTASection from "@/components/home/CTASection";
-import { useMemo, useState } from "react";
 import HeroSection from "@/components/opportunity/HeroSection";
 import SearchBar from "@/components/opportunity/SearchBar";
 import FilterBar from "@/components/opportunity/FilterBar";
@@ -11,112 +10,138 @@ import CategoryTabs from "@/components/CategoryTabs";
 import OpportunityGrid from "@/components/OpportunityGrid";
 import ResultHeader from "@/components/opportunity/ResultHeader";
 
-export default function Opportunities(){
-    const [search, setSearch] = useState("");
-    const [selectedCategory, setSelectedCategory] = useState("All");
-    const [selectedType, setSelectedType] = useState("All");
-    const [selectedLocation, setSelectedLocation] = useState("All");
+import { Opportunity } from "@/components/types/opportunity";
+import { getOpportunities } from "@/lib/mockApi";
 
+export default function Opportunities() {
+  const [jobs, setJobs] = useState<Opportunity[]>([]);
+  const [loading, setLoading] = useState(true);
 
-    const filteredJobs = useMemo(() => {
+  const [search, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedType, setSelectedType] = useState("All");
+  const [selectedLocation, setSelectedLocation] = useState("All");
 
+  useEffect(() => {
+    async function loadJobs() {
+      try {
+        const data = await getOpportunities();
+        setJobs(data);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadJobs();
+  }, []);
+
+  const filteredJobs = useMemo(() => {
     const query = search.toLowerCase();
 
     return jobs.filter((job) => {
+      const matchesSearch =
+        job.title.toLowerCase().includes(query) ||
+        job.location.toLowerCase().includes(query) ||
+        job.organization.toLowerCase().includes(query) ||
+        job.category.toLowerCase().includes(query);
 
-        const matchesSearch =
-            job.title.toLowerCase().includes(query) ||
-            job.location.toLowerCase().includes(query) ||
-            job.organization.toLowerCase().includes(query) ||
-            job.category.toLowerCase().includes(query);
+      const matchesCategory =
+        selectedCategory === "All" ||
+        job.category === selectedCategory;
 
-        const matchesCategory =
-            selectedCategory === "All" ||
-            job.category === selectedCategory;
+      const matchesType =
+        selectedType === "All" ||
+        job.type === selectedType;
 
-        const matchesType =
-            selectedType === "All" ||
-            job.type === selectedType;
+      const matchesLocation =
+        selectedLocation === "All" ||
+        job.location === selectedLocation;
 
-        const matchesLocation =
-            selectedLocation === "All" ||
-            job.location === selectedLocation;
-
-        return (
-            matchesSearch &&
-            matchesCategory &&
-            matchesType &&
-            matchesLocation
-        );
-
+      return (
+        matchesSearch &&
+        matchesCategory &&
+        matchesType &&
+        matchesLocation
+      );
     });
+  }, [
+    jobs,
+    search,
+    selectedCategory,
+    selectedType,
+    selectedLocation,
+  ]);
 
-}, [search, selectedCategory, selectedType, selectedLocation]);
+  const categories = useMemo(
+    () => [
+      "All",
+      ...new Set(jobs.map((job) => job.category)),
+    ],
+    [jobs]
+  );
 
+  const types = useMemo(
+    () => [
+      "All",
+      ...new Set(jobs.map((job) => job.type)),
+    ],
+    [jobs]
+  );
 
-const categories = [
-    "All",
-    ...new Set(jobs.map((job) => job.category)),
-];
+  const locations = useMemo(
+    () => [
+      "All",
+      ...new Set(jobs.map((job) => job.location)),
+    ],
+    [jobs]
+  );
 
-const types = [
-    "All",
-    ...new Set(jobs.map((job) => job.type)),
-];
+  return (
+    <main className="bg-background">
+      <HeroSection />
 
-const locations = [
-    "All",
-    ...new Set(jobs.map((job) => job.location)),
-];
+      <section className="container py-10 md:py-14">
+        <SearchBar
+          search={search}
+          onSearch={setSearch}
+        />
+      </section>
 
-    return(
-        <main className="bg-background">
+      <section className="container">
+        <FilterBar
+          categories={categories}
+          types={types}
+          locations={locations}
+          selectedCategory={selectedCategory}
+          selectedType={selectedType}
+          selectedLocation={selectedLocation}
+          setSelectedCategory={setSelectedCategory}
+          setSelectedType={setSelectedType}
+          setSelectedLocation={setSelectedLocation}
+        />
+      </section>
 
-    <HeroSection />
+      <section className="container mt-8">
+        <CategoryTabs
+          categories={categories}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
+      </section>
 
-    <section className="container py-10 md:py-14">
-      <SearchBar
-        search={search}
-        onSearch={setSearch}
-      />
-    </section>
+      <section className="container mt-10 pb-20">
+        <ResultHeader total={filteredJobs.length} />
 
-    <section className="container">
-      <FilterBar
-        categories={categories}
-        types={types}
-        locations={locations}
-        selectedCategory={selectedCategory}
-        selectedType={selectedType}
-        selectedLocation={selectedLocation}
-        setSelectedCategory={setSelectedCategory}
-        setSelectedType={setSelectedType}
-        setSelectedLocation={setSelectedLocation}
-      />
-    </section>
+        {loading ? (
+          <div className="py-10 text-center">
+            Loading opportunities...
+          </div>
+        ) : (
+          <OpportunityGrid jobs={filteredJobs} />
+        )}
+      </section>
 
-    <section className="container mt-8">
-      <CategoryTabs
-        categories={categories}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-      />
-    </section>
-
-    <section className="container mt-10 pb-20">
-
-      <ResultHeader
-        total={filteredJobs.length}
-      />
-
-      <OpportunityGrid
-        jobs={filteredJobs}
-      />
-
-    </section>
-
-    <CTASection />
-
-  </main>
-    )
+      <CTASection />
+    </main>
+  );
 }

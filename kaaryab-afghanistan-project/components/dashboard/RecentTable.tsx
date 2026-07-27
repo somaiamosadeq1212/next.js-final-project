@@ -1,12 +1,37 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { getOpportunityData } from "@/lib/opportunities";
+
+import { Opportunity } from "@/components/types/opportunity";
+import { getRecentOpportunities } from "@/lib/dashboard";
 
 export default function RecentTable() {
-  const { jobs  } = getOpportunityData();
+  const [recent, setRecent] = useState<Opportunity[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const recent = jobs.slice(0, 5);
+  useEffect(() => {
+    async function loadRecent() {
+      try {
+        const data = await getRecentOpportunities(5);
+        setRecent(data);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadRecent();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="rounded-2xl border bg-white p-6 shadow-sm">
+        <p className="text-sm text-slate-500">
+          Loading recent opportunities...
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="rounded-2xl border bg-white p-6 shadow-sm">
@@ -51,6 +76,17 @@ export default function RecentTable() {
                 <td>{job.deadline}</td>
               </tr>
             ))}
+
+            {recent.length === 0 && (
+              <tr>
+                <td
+                  colSpan={4}
+                  className="py-8 text-center text-slate-500"
+                >
+                  No opportunities found.
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

@@ -1,8 +1,10 @@
 "use client";
 
+import { Link } from "lucide-react";
 import { navigation } from "../navigation";
 import NavItem from "./NavItem";
 import Button from "@/components/ui/Button";
+import { id } from "zod/locales";
 
 export default function DesktopNav() {
     return (
@@ -44,11 +46,15 @@ export default function DesktopNav() {
                     gap-4
                 "
             >
+
+                <Link href={`/opportunities/add/${id}`}>
                 <Button
                     size="md"
                 >
                     Post Opportunity
                 </Button>
+                </Link>
+                
             </div>
         </div>
     );

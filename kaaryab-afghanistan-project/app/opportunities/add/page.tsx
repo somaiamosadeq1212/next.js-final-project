@@ -1,13 +1,13 @@
 "use client";
 
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import OpportunityForm from "@/components/forms/OpportunityForm";
 import type { OpportunitySchema } from "@/lib/validation/opportunity-schema";
 import { useOpportunity } from "@/hooks/useOpportunity";
 
 export default function AddOpportunityPage() {
-  // const router = useRouter();
+  const router = useRouter();
 
   const { createOpportunity, loading } = useOpportunity();
 
@@ -15,7 +15,7 @@ export default function AddOpportunityPage() {
   const handleSubmit = async (data: OpportunitySchema) => {
     await createOpportunity(data);
 
-    // router.push("/opportunities");
+    router.push("/opportunities");
   };
 
   return (

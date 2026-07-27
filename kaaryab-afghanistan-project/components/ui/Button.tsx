@@ -9,7 +9,9 @@ type ButtonVariant =
   | "secondary"
   | "outline"
   | "ghost"
-  | "danger";
+  | "danger"
+  | "destructive";
+  
 
 type ButtonSize =
   | "sm"
@@ -56,6 +58,9 @@ export default function Button({
             "bg-transparent border border-default text-default hover:bg-gray-100 dark:hover:bg-slate-800",
         ghost:
             "bg-transparent text-default hover:bg-slate-100 dark:hover:bg-slate-800",
+
+        destructive:
+    "bg-[var(--color-danger)] text-white hover:opacity-90",
 
     };
 

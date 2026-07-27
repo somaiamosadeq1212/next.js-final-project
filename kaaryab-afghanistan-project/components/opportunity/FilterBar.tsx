@@ -88,7 +88,7 @@ export default function FilterBar({
       {/* Header */}
 
       <div className="mb-6 flex items-center justify-between">
-        <div>
+        <div className="p-4">
           <h2 className="text-xl font-semibold text-slate-900 dark:text-white">
             Filter Opportunities
           </h2>

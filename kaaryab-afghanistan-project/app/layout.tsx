@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SaveProvider from "./contexts/SaveContext";
+import ToastProvider from "@/components/providers/ToastProvider";
 
 export const metadata: Metadata = {
   title: "KaarYab Afghanistan",
@@ -21,6 +22,7 @@ export default function RootLayout({
         <Navbar />
 
         <main className="flex-1 container mx-auto px-4 py-6">
+          <ToastProvider />
           {children}
         </main>
 

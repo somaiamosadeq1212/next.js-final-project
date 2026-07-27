@@ -1,14 +1,35 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 import ChartCard from "@/components/dashboard/ChartCard";
 import DashboardStats from "@/components/dashboard/DashboardStats";
-// import {ChartCard} from "@/components/dashboard/ChartCard";
 import RecentTable from "@/components/dashboard/RecentTable";
 
-import { monthlyData, categoryData } from "@/lib/chart-data";
+import {
+  getCategoryChart,
+  getMonthlyChart,
+  ChartDataItem,
+} from "@/lib/dashboard";
 
 export default function DashboardPage() {
+  const [monthlyData, setMonthlyData] = useState<ChartDataItem[]>([]);
+  const [categoryData, setCategoryData] = useState<ChartDataItem[]>([]);
+
+  useEffect(() => {
+    async function loadDashboard() {
+      const monthly = await getMonthlyChart();
+      const categories = await getCategoryChart();
+
+      setMonthlyData(monthly);
+      setCategoryData(categories);
+    }
+
+    loadDashboard();
+  }, []);
+
   return (
     <div className="space-y-8">
-    
       <DashboardStats />
 
       <div className="grid gap-6 lg:grid-cols-2">
@@ -25,10 +46,7 @@ export default function DashboardPage() {
         />
       </div>
 
-      {/* <ChartCard /> */}
-
       <RecentTable />
-
     </div>
   );
 }

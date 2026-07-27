@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import {
   Briefcase,
   GraduationCap,
@@ -8,63 +11,80 @@ import {
 } from "lucide-react";
 
 import DashboardCard from "./DashboardCard";
-
-const stats = [
-  {
-    title: "Total Opportunities",
-    value: 126,
-    icon: <Layers size={28} />,
-    color: "bg-blue-600",
-  },
-  {
-    title: "Jobs",
-    value: 58,
-    icon: <Briefcase size={28} />,
-    color: "bg-green-600",
-  },
-  {
-    title: "Scholarships",
-    value: 24,
-    icon: <GraduationCap size={28} />,
-    color: "bg-purple-600",
-  },
-  {
-    title: "Internships",
-    value: 18,
-    icon: <Laptop size={28} />,
-    color: "bg-orange-500",
-  },
-  {
-    title: "Remote",
-    value: 31,
-    icon: <Globe size={28} />,
-    color: "bg-cyan-600",
-  },
-  {
-    title: "Expiring Soon",
-    value: 9,
-    icon: <Clock size={28} />,
-    color: "bg-red-500",
-  },
-];
+import {
+  getDashboardStats,
+  DashboardStats as DashboardStatsType,
+} from "@/lib/dashboard";
 
 export default function DashboardStats() {
+  const [stats, setStats] =
+    useState<DashboardStatsType | null>(null);
+
+  useEffect(() => {
+    async function loadStats() {
+      const data = await getDashboardStats();
+      setStats(data);
+    }
+
+    loadStats();
+  }, []);
+
+  if (!stats) {
+    return (
+      <p className="text-sm text-slate-500">
+        Loading dashboard...
+      </p>
+    );
+  }
+
+  const cards = [
+    {
+      title: "Total Opportunities",
+      value: stats.total,
+      icon: <Layers size={28} />,
+      color: "bg-blue-600",
+    },
+    {
+      title: "Jobs",
+      value: stats.jobs,
+      icon: <Briefcase size={28} />,
+      color: "bg-green-600",
+    },
+    {
+      title: "Scholarships",
+      value: stats.scholarships,
+      icon: <GraduationCap size={28} />,
+      color: "bg-purple-600",
+    },
+    {
+      title: "Internships",
+      value: stats.internships,
+      icon: <Laptop size={28} />,
+      color: "bg-orange-500",
+    },
+    {
+      title: "Remote Work",
+      value: stats.remoteWork,
+      icon: <Globe size={28} />,
+      color: "bg-cyan-600",
+    },
+    {
+      title: "Expiring Soon",
+      value: stats.expiringSoon,
+      icon: <Clock size={28} />,
+      color: "bg-red-500",
+    },
+  ];
+
   return (
-    <section
-      className="
-        grid
-        gap-6
-        sm:grid-cols-2
-        xl:grid-cols-3
-      "
-    >
-      {stats.map((item) => (
+    <section className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+      {cards.map((card) => (
         <DashboardCard
-          key={item.title}
-          title={item.title}
-          value={item.value}
-          icon={item.icon}
-          color={item.color}
+          key={card.title}
+          title={card.title}
+          value={card.value}
+          icon={card.icon}
+          color={card.color}
         />
       ))}
     </section>

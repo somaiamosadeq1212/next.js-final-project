@@ -20,7 +20,7 @@ const links = [
     icon: Briefcase,
   },
   {
-    href: "/dashboard/opportunities/new",
+    href: "/dashboard/opportunities/add",
     label: "Add Opportunity",
     icon: PlusCircle,
   },
