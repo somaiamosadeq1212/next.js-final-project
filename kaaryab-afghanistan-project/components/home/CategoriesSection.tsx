@@ -1,31 +1,37 @@
-import { getOpportunityData } from "@/lib/opportunities";
+import type { Opportunity } from "@/components/types/opportunity";
 import SectionHeader from "../ui/SectionHeader";
 
-export default function CategoriesSection() {
+interface CategoriesSectionProps {
+  opportunities: Opportunity[];
+}
+export default function CategoriesSection({
+  opportunities,
+}: CategoriesSectionProps) {
 
-  const { categories } = getOpportunityData();
+  const categories = Object.entries(
+  opportunities.reduce((acc, opportunity) => {
+    acc[opportunity.category] = (acc[opportunity.category] || 0) + 1;
+    return acc;
+  }, {} as Record<string, number>)
+).map(([title, count]) => ({
+  title,
+  count,
+}));
+
+const categoryIcons: Record<string, string> = {
+  Job: "💼",
+  Internship: "🎓",
+  Scholarship: "🏆",
+  Course: "📚",
+  Remote: "🌍",
+  Training: "🚀",
+};
 
   return (
 
     <section className="bg-background py-24">
 
       <div className="mx-auto max-w-7xl px-6">
-
-        {/* <div className="mx-auto max-w-3xl text-center">
-
-          <span className="inline-flex rounded-full border border-default bg-surface px-4 py-2 text-sm font-medium text-primary shadow-card">
-            Categories
-          </span>
-
-          <h2 className="mt-6 text-4xl font-bold text-default md:text-5xl">
-            Browse by Category
-          </h2>
-
-          <p className="mt-5 text-lg text-muted">
-            Explore thousands of opportunities across different categories.
-          </p>
-
-        </div> */}
 
           <SectionHeader
     badge="Categories"
@@ -43,7 +49,8 @@ export default function CategoriesSection() {
             >
 
               <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-4xl transition group-hover:scale-110">
-                {category.icon}
+                {/* {category.icon} */}
+                {categoryIcons[category.title] ?? "📁"}
               </div>
 
               <h3 className="mt-8 text-2xl font-bold text-default">

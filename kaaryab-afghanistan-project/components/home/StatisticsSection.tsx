@@ -1,8 +1,35 @@
-import { getOpportunityData } from "@/lib/opportunities";
+import type { Opportunity } from "@/components/types/opportunity";
 
-export default function StatisticsSection() {
+interface StatisticsSectionProps {
+  opportunities: Opportunity[];
+}
 
-  const { statistics } = getOpportunityData();
+export default function StatisticsSection({
+  opportunities,
+}: StatisticsSectionProps) {
+
+  const statistics = [
+  {
+    title: "Total Opportunities",
+    value: opportunities.length,
+    icon: "📌",
+  },
+  {
+    title: "Organizations",
+    value: new Set(opportunities.map((item) => item.organization)).size,
+    icon: "🏢",
+  },
+  {
+    title: "Categories",
+    value: new Set(opportunities.map((item) => item.category)).size,
+    icon: "📂",
+  },
+  {
+    title: "Featured",
+    value: opportunities.filter((item) => item.featured).length,
+    icon: "⭐",
+  },
+];
 
   return (
 

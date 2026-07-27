@@ -17,12 +17,32 @@ import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import SectionTitle from "@/components/ui/SectionTitle";
 
-import { getOpportunityData } from "@/lib/opportunities";
+import type { Opportunity } from "@/components/types/opportunity";
 
-export default function HeroSection() {
+
+interface HeroSectionProps {
+  opportunities: Opportunity[];
+}
+
+export default function HeroSection({
+  opportunities,
+}: HeroSectionProps) {
   const [search, setSearch] = useState("");
 
-  const { statistics } = getOpportunityData();
+  const statistics = [
+  {
+    title: "Opportunities",
+    value: opportunities.length,
+  },
+  {
+    title: "Organizations",
+    value: new Set(opportunities.map((item) => item.organization)).size,
+  },
+  {
+    title: "Categories",
+    value: new Set(opportunities.map((item) => item.category)).size,
+  },
+];
 
   return (
     <section className="relative overflow-hidden bg-background">
