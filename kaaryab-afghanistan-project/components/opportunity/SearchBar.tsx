@@ -6,16 +6,19 @@ import Input from "@/components/ui/Input";
 type SearchBarProps = {
   search: string;
   onSearch: (value: string) => void;
+  onSubmit?: () => void;
 };
 
 export default function SearchBar({
   search,
   onSearch,
+  onSubmit,
 }: SearchBarProps) {
   return (
     <div className="relative w-full">
       {/* Search Icon */}
       <Search
+        aria-hidden="true"
         className="
           pointer-events-none
           absolute
@@ -34,6 +37,11 @@ export default function SearchBar({
         type="text"
         value={search}
         onChange={(e) => onSearch(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            onSubmit?.();
+          }
+        }}
         placeholder="Search jobs, internships, scholarships..."
         className="pl-12 pr-12"
       />
@@ -56,12 +64,12 @@ export default function SearchBar({
             justify-center
             rounded-full
             transition-colors
-
-            hover:bg-slate-100
-            dark:hover:bg-slate-800
+            hover:bg-surface
+            focus-visible:outline-none
+            focus-visible:bg-surface
           "
         >
-          <X className="h-4 w-4 text-slate-500" />
+          <X className="h-4 w-4 text-muted" />
         </button>
       )}
     </div>

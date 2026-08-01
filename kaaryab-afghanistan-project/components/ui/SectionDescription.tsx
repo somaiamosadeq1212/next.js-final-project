@@ -1,31 +1,31 @@
 import { ReactNode } from "react";
 
 type Props = {
-    children:ReactNode;
-    className?:string;
+    children: ReactNode;
+    className?: string;
 }
 
 export default function SectionDescription({
-children,
-className=""
-}:Props){
+    children,
+    className = ""
+}: Props) {
 
-return(
+    return (
 
-<p
-className={`
-mt-4
-text-lg
-leading-8
-text-muted
-${className}
-`}
->
+        <p
+            className={`
+                mt-4
+                text-lg
+                leading-8
+                text-muted
+                ${className}
+            `}
+        >
 
-{children}
+            {children}
 
-</p>
+        </p>
 
-);
+    );
 
 }

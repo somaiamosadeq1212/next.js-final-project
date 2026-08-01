@@ -2,7 +2,6 @@
 
 import OpportunityRow from "./OpportunityRow";
 import TableHeader from "./TableHeader";
-
 import { Opportunity } from "@/components/types/opportunity";
 
 type Props = {
@@ -19,7 +18,7 @@ export default function OpportunityDesktop({
   onSort,
 }: Props) {
   return (
-    <div className="hidden overflow-hidden rounded-2xl border border-border bg-card shadow lg:block">
+    <div className="hidden overflow-x-auto rounded-2xl border border-border bg-card shadow lg:block">
 
       <table className="w-full">
 

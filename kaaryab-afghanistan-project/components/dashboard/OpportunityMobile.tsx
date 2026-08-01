@@ -6,7 +6,7 @@ import MobileOpportunityCard from "./MobileOpportunityCard";
 type Props = {
   jobs: Opportunity[];
 
-  onDelete: (id: string) => void;
+  onDelete: (id: number) => void;
 };
 
 export default function OpportunityMobile({

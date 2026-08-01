@@ -20,6 +20,7 @@ export default function DashboardStats() {
   const [stats, setStats] =
     useState<DashboardStatsType | null>(null);
 
+    // Load dashboard statistics on initial render.
   useEffect(() => {
     async function loadStats() {
       const data = await getDashboardStats();
@@ -31,12 +32,13 @@ export default function DashboardStats() {
 
   if (!stats) {
     return (
-      <p className="text-sm text-slate-500">
+      <p className="text-sm text-muted">
         Loading dashboard...
       </p>
     );
   }
 
+  // Dashboard summary cards displayed at the top of the page.
   const cards = [
     {
       title: "Total Opportunities",

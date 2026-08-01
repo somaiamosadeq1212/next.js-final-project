@@ -1,8 +1,7 @@
 "use client";
 
 import { Briefcase, Layers3, MapPin, RotateCcw } from "lucide-react";
-
-import {Card} from "@/components/ui/Card";
+import { Card } from "@/components/ui/Card";
 import Select from "@/components/ui/Select";
 import Button from "@/components/ui/Button";
 
@@ -21,6 +20,7 @@ type FilterBarProps = {
 };
 
 type SelectFieldProps = {
+  id: string;
   label: string;
   icon: React.ReactNode;
   value: string;
@@ -28,7 +28,9 @@ type SelectFieldProps = {
   onChange: (value: string) => void;
 };
 
+// Reusable select field used for Category, Job Type, and Location filters.
 function SelectField({
+  id,
   label,
   icon,
   value,
@@ -37,12 +39,15 @@ function SelectField({
 }: SelectFieldProps) {
   return (
     <div className="space-y-2 p-4">
-      <label className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300">
+      <label
+        htmlFor={id}
+        className="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300">
         {icon}
         {label}
       </label>
 
       <Select
+        id={id}
         value={value}
         onChange={(e) => onChange(e.target.value)}
       >
@@ -72,6 +77,8 @@ export default function FilterBar({
   setSelectedType,
   setSelectedLocation,
 }: FilterBarProps) {
+
+  // Reset all filters back to their default "All" state.
   const resetFilters = () => {
     setSelectedCategory("All");
     setSelectedType("All");
@@ -115,6 +122,7 @@ export default function FilterBar({
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
 
         <SelectField
+          id="category"
           label="Category"
           icon={<Layers3 className="h-4 w-4 text-blue-600" />}
           value={selectedCategory}
@@ -123,6 +131,7 @@ export default function FilterBar({
         />
 
         <SelectField
+          id="job-type"
           label="Job Type"
           icon={<Briefcase className="h-4 w-4 text-blue-600" />}
           value={selectedType}
@@ -131,6 +140,7 @@ export default function FilterBar({
         />
 
         <SelectField
+          id="location"
           label="Location"
           icon={<MapPin className="h-4 w-4 text-blue-600" />}
           value={selectedLocation}

@@ -2,10 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
-
+import ThemeToggle from "@/components/ui/ThemeToggle";
 import Container from "@/components/ui/Container";
 import Logo from "@/components/ui/Logo";
-
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 
@@ -13,18 +12,26 @@ export default function Navbar() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
+    // Add shadow and blur after scrolling
     useEffect(() => {
         function handleScroll() {
-            setScrolled(window.scrollY > 10);
+            const isScrolled = window.scrollY > 10;
+
+            setScrolled((prev) =>
+                prev !== isScrolled ? isScrolled : prev
+            );
         }
 
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, {
+            passive: true,
+        });
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
 
+    // Prevent background scrolling while the mobile menu is open
     useEffect(() => {
         if (mobileMenuOpen) {
             document.body.style.overflow = "hidden";
@@ -44,24 +51,20 @@ export default function Navbar() {
                     sticky
                     top-0
                     z-50
-
                     w-full
-
                     transition-all
                     duration-300
-
-                    ${
-                        scrolled
-                            ? `
-                                bg-background/90
-                                backdrop-blur-lg
-                                shadow-card
-                                border-b
-                                border-default
-                              `
-                            : `
-                                bg-background
-                              `
+                    ${scrolled
+                        ? `
+                            bg-background/90
+                            backdrop-blur-lg
+                            shadow-card
+                            border-b
+                            border-default
+                          `
+                        : `
+                            g-surface
+                          `
                     }
                 `}
             >
@@ -74,35 +77,40 @@ export default function Navbar() {
                             justify-between
                         "
                     >
-                        {/* Logo */}
+                        {/* Brand Logo */}
 
                         <Logo />
 
                         {/* Desktop Navigation */}
-
                         <DesktopNav />
 
-                        {/* Mobile Menu Button */}
+                        {/* Theme Toggle (Dark Mode) */}
+                        <ThemeToggle />
 
+                        {/* Mobile Menu Button */}
                         <button
                             type="button"
-                            onClick={() =>
-                                setMobileMenuOpen(true)
-                            }
+                            onClick={() => {
+                                if (!mobileMenuOpen) {
+                                    setMobileMenuOpen(true);
+                                }
+                            }}
+                            disabled={mobileMenuOpen}
                             aria-label="Open Menu"
+                            aria-expanded={mobileMenuOpen}
+                            aria-controls="mobile-navigation"
                             className="
                                 flex
                                 items-center
                                 justify-center
-
                                 rounded-xl
-
                                 p-2
-
-                                transition-all
-
-                                hover:bg-slate-100
-
+                                transition-colors
+                                hover:bg-muted
+                                focus-visible:outline-none
+                                focus-visible:ring-2
+                                focus-visible:ring-primary
+                                focus-visible:ring-offset-2
                                 lg:hidden
                             "
                         >

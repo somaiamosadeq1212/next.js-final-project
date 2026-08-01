@@ -26,7 +26,7 @@ export function useOpportunityActions(
     setLoading(false);
   }
 
-  async function update(id: string, data: Opportunity) {
+  async function update(id: number, data: Opportunity) {
     setLoading(true);
 
     const previous = [...opportunities];
@@ -44,7 +44,7 @@ export function useOpportunityActions(
     setLoading(false);
   }
 
-  async function remove(id: string) {
+  async function remove(id: number) {
     setLoading(true);
 
     const previous = [...opportunities];

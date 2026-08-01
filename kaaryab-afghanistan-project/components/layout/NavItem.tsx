@@ -17,10 +17,12 @@ export default function NavItem({
 
     const pathname = usePathname();
 
+    // Determine whether the current navigation item is active
     const isActive =
         pathname === href ||
         (href !== "/" && pathname.startsWith(href));
 
+    // Render a single navigation link
     return (
         <Link
             href={href}
@@ -30,20 +32,21 @@ export default function NavItem({
                 relative
                 inline-flex
                 items-center
-
                 px-2
                 py-2
-
                 text-sm
                 font-medium
-
-                transition-all
+                transition-colors
                 duration-200
+                focus-visible:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-primary
+                focus-visible:ring-offset-2
+                
 
-                ${
-                    isActive
-                        ? "text-primary"
-                        : "text-muted hover:text-default"
+                ${isActive
+                    ? "text-primary"
+                    : "text-muted hover:text-default"
                 }
 
                 after:absolute
@@ -58,10 +61,9 @@ export default function NavItem({
                 after:transition-transform
                 after:duration-300
 
-                ${
-                    isActive
-                        ? "after:scale-x-100"
-                        : "hover:after:scale-x-100"
+                ${isActive
+                    ? "after:scale-x-100"
+                    : "hover:after:scale-x-100"
                 }
             `}
         >

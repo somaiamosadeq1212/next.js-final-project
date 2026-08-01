@@ -40,22 +40,9 @@ export default function OpportunityToolbar({
   clearFilters,
 }: Props) {
 
-//   console.log("categories", categories);
-// console.log("statuses", statuses);
-
-// console.log(
-//   "duplicate categories",
-//   categories.filter((v, i) => categories.indexOf(v) !== i)
-// );
-
-// console.log(
-//   "duplicate statuses",
-//   statuses.filter((v, i) => statuses.indexOf(v) !== i)
-// );
   return (
-    <div className="mb-6 rounded-2xl border border-border bg-card p-5">
-
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+    <div className="mb-6 rounded-2xl overflow-hidden border border-border bg-card p-4 sm:p-5">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
 
         <Input
           placeholder="Search opportunities..."
@@ -69,47 +56,48 @@ export default function OpportunityToolbar({
           onChange={(e) => setCategory(e.target.value)}
         >
           {categories.map((item) => (
-  <option
-    key={item}
-    value={item}
-  >
-    {item === "All"
-      ? "All Categories"
-      : item}
-  </option>
-))}
+            <option
+              key={item}
+              value={item}
+            >
+              {item === "All"
+                ? "All Categories"
+                : item}
+            </option>
+          ))}
         </Select>
 
         <Select
-          // key={status}
           value={status}
           onChange={(e) => setStatus(e.target.value)}
         >
           {statuses.map((item) => (
-  <option
-    key={item}
-    value={item}
-  >
-    {item === "All"
-      ? "All Status"
-      : item}
-  </option>
-))}
+            <option
+              key={item}
+              value={item}
+            >
+              {item === "All"
+                ? "All Status"
+                : item}
+            </option>
+          ))}
         </Select>
 
         <Button
           variant="outline"
           onClick={clearFilters}
-          className="w-full"
+          className="w-full xl:w-auto"
         >
           Clear Filters
         </Button>
 
       </div>
 
-      <p className="mt-4 text-sm text-muted-foreground">
-        {total} opportunities found
-      </p>
+      <div className="mt-4 flex items-center justify-between">
+        <p className="mt-4 text-sm text-muted-foreground">
+          {total} opportunities found
+        </p>
+      </div>
 
     </div>
   );

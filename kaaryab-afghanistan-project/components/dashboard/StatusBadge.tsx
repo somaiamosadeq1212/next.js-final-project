@@ -6,10 +6,10 @@ type Props = {
 
 export default function StatusBadge({ status }: Props) {
 
-   if (!status) {
+  if (!status) {
     return <Badge variant="secondary">Unknown</Badge>;
   }
-  
+
   const variants = {
     Open: "success",
     "Closing Soon": "warning",

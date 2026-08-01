@@ -7,6 +7,7 @@ type InputProps = InputHTMLAttributes<HTMLInputElement>& {
   label?: string;
 };
 
+// Reusable input component with optional label and ref forwarding.
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, label, id, ...props }, ref) => {
     return (
@@ -14,7 +15,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={id}
-            className="block text-sm font-medium text-slate-700 dark:text-slate-300"
+            className="block text-sm font-medium text-default"
           >
             {label}
           </label>
@@ -28,29 +29,17 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             w-full
             rounded-xl
             border
-            border-slate-300
-            bg-white
             px-4
             py-3
-            text-slate-900
-            placeholder:text-slate-400
-            shadow-sm
-            transition-all
+            transition-theme
             duration-200
-
-            hover:border-slate-400
-
-            focus:border-blue-600
+            bg-background
+            text-default
+            placeholder:text-muted
             focus:outline-none
-            focus:ring-4
-            focus:ring-blue-100
-
-            dark:border-slate-700
-            dark:bg-slate-900
-            dark:text-white
-            dark:placeholder:text-slate-500
-            dark:hover:border-slate-600
-            dark:focus:ring-blue-900/30
+            focus:ring-2
+            focus:ring-primary/20
+            focus:border-primary
             `,
             className
           )}

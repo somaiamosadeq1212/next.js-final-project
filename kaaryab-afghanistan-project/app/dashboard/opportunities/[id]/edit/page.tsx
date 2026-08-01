@@ -1,16 +1,12 @@
 "use client";
 
 import { useParams } from "next/navigation";
-
-import TableHeader from "@/components/dashboard/TableHeader";
 import OpportunityForm from "@/components/forms/OpportunityForm";
-
 import { useOpportunity } from "@/hooks/useOpportunity";
 import { OpportunitySchema } from "@/lib/validation/opportunity-schema";
 
 export default function EditOpportunityPage() {
   const params = useParams();
-
   const id = Number(params.id);
 
   const {
@@ -23,10 +19,14 @@ export default function EditOpportunityPage() {
   if (loading) {
     return (
       <div className="space-y-4">
-        <TableHeader
-          title="Edit Opportunity"
-          description="Loading..."
-        />
+
+        <h1 className="text-3xl font-bold text-default">
+          Edit Opportunity
+        </h1>
+
+        <p className="text-muted">
+          Loading...
+        </p>
       </div>
     );
   }
@@ -56,10 +56,10 @@ export default function EditOpportunityPage() {
 
   return (
     <div className="space-y-8">
-      <TableHeader
-        title="Edit Opportunity"
-        description="Update opportunity information"
-      />
+
+       <h1 className="text-3xl font-bold text-default">
+          Edit Opportunity
+        </h1>
 
       <OpportunityForm
         defaultValues={defaultValues}

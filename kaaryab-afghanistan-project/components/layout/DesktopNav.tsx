@@ -1,10 +1,9 @@
 "use client";
 
-import { Link } from "lucide-react";
 import { navigation } from "../navigation";
 import NavItem from "./NavItem";
 import Button from "@/components/ui/Button";
-import { id } from "zod/locales";
+import Link from "next/link";
 
 export default function DesktopNav() {
     return (
@@ -16,10 +15,8 @@ export default function DesktopNav() {
                 lg:justify-between
                 lg:flex-1
                 lg:ml-12
-            "
-        >
+            ">
             {/* Navigation Links */}
-
             <nav
                 className="
                     flex
@@ -38,23 +35,21 @@ export default function DesktopNav() {
             </nav>
 
             {/* Right Side */}
-
             <div
                 className="
                     flex
                     items-center
                     gap-4
-                "
-            >
+                ">
 
-                <Link href={`/opportunities/add/${id}`}>
-                <Button
-                    size="md"
-                >
-                    Post Opportunity
-                </Button>
+                <Link href="/dashboard/opportunities/add">
+                    <Button
+                        size="md"
+                    >
+                        Post Opportunity
+                    </Button>
                 </Link>
-                
+
             </div>
         </div>
     );

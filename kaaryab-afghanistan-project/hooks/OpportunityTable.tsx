@@ -20,7 +20,7 @@ export function useOpportunityTable() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [selectedId, setSelectedId] =
-    useState<string | null>(null);
+    useState<number | null>(null);
 
   const [dialogOpen, setDialogOpen] =
     useState(false);
@@ -78,7 +78,6 @@ const statuses = useMemo(() => {
     ),
   ];
 }, [jobs]);
-
 
   const {
     remove,
@@ -174,13 +173,13 @@ const statuses = useMemo(() => {
     setSortAsc((prev) => !prev);
   }
 
-  function openDelete(id: string) {
+  function openDelete(id: number) {
     setSelectedId(id);
     setDialogOpen(true);
   }
 
   async function confirmDelete() {
-    if (!selectedId) return;
+    if (selectedId === null) return;
 
     await remove(selectedId);
 

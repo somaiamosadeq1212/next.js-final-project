@@ -13,7 +13,6 @@ export const jobs = [
     email: "jobs@ktc.af",
     image: "/images/frontend.jpg",
     featured: true,
-    applyUrl: "https://careers.example.com/frontend",
     tags: ["IT", "React", "Next.js", "Tailwind"],
     description:
       "Develop modern web applications using React and Next.js.",

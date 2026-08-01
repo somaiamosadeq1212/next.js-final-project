@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { toast } from "sonner";
 
 import {
   ArrowLeft,
@@ -22,6 +23,7 @@ import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import SaveOpportunityButton from "@/components/SaveOpportunityButton";
 import OpportunityCard from "@/components/opportunity/OpportunityCard";
+import LoadingSkeleton from "../ui/LoadingSkeleton";
 
 type Props = {
   id: number;
@@ -68,9 +70,9 @@ export default function OpportunityDetailsClient({
 
   if (loading) {
     return (
-      <main className="bg-gray-50 dark:bg-gray-950 min-h-screen py-10">
-        <div className="container mx-auto max-w-7xl px-4">
-          Loading...
+      <main className="bg-background min-h-screen py-10">
+        <div className="mx-auto max-w-7xl px-6">
+          <LoadingSkeleton rows={8} />
         </div>
       </main>
     );
@@ -78,7 +80,7 @@ export default function OpportunityDetailsClient({
 
   if (!job) {
     return (
-      <main className="bg-gray-50 dark:bg-gray-950 min-h-screen py-10">
+      <main className="bg-background min-h-screen py-10">
         <div className="container mx-auto max-w-7xl px-4">
           Opportunity not found.
         </div>
@@ -87,13 +89,12 @@ export default function OpportunityDetailsClient({
   }
 
   return (
-
-    <main className="bg-gray-50 dark:bg-gray-950 min-h-screen py-10">
+    <main className="bg-background min-h-screen py-10">
       <div className="container mx-auto max-w-7xl px-4">
 
         {/* Back Button */}
-
         <Link
+          aria-label="Back to opportunities"
           href="/opportunities"
           className="inline-flex items-center gap-2 text-primary hover:underline mb-8"
         >
@@ -102,13 +103,11 @@ export default function OpportunityDetailsClient({
         </Link>
 
         {/* Hero */}
-
-        <Card className="p-8 lg:p-10 mb-8">
+        <Card className="p-8 lg:p-10 mb-8 shadow-card transition-theme">
 
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
 
             {/* Left */}
-
             <div className="space-y-6 flex-1">
 
               <div className="flex flex-wrap gap-3">
@@ -125,11 +124,11 @@ export default function OpportunityDetailsClient({
 
               <div>
 
-                <h1 className="text-4xl font-bold tracking-tight mb-4">
+                <h1 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
                   {job.title}
                 </h1>
 
-                <div className="flex flex-wrap gap-6 text-muted-foreground">
+                <div className="flex flex-wrap gap-6 text-muted">
 
                   <div className="flex items-center gap-2">
                     <Building2 size={18} />
@@ -153,10 +152,15 @@ export default function OpportunityDetailsClient({
             </div>
 
             {/* Right */}
-
             <div className="flex flex-col gap-4 w-full lg:w-60">
 
-              <Button className="w-full">
+              <Button
+                onClick={() =>
+                  toast.info(
+                    "Application feature will be available in the production version."
+                  )
+                }
+              >
                 Apply Now
               </Button>
 
@@ -169,222 +173,267 @@ export default function OpportunityDetailsClient({
         </Card>
 
         {/* Main Content */}
+        <div className="grid lg:grid-cols-3 gap-8">
 
-<div className="grid lg:grid-cols-3 gap-8">
+          {/* Left Content */}
+          <div className="lg:col-span-2 space-y-6">
 
-  {/* Left Content */}
+            <Card className="p-6">
 
-  <div className="lg:col-span-2 space-y-6">
+              <h2 className="text-2xl font-bold mb-6">
+                Job Information
+              </h2>
 
-    <Card className="p-6">
+              <div className="grid sm:grid-cols-2 gap-5">
 
-      <h2 className="text-2xl font-bold mb-6">
-        Job Information
-      </h2>
+                <div className="
+                  rounded-card
+                  border
+                  border-default
+                  bg-surface
+                  shadow-card
+                  transition-theme
+                  hover:-translate-y-1
+                  hover:shadow-hover
+                  p-5">
 
-      <div className="grid sm:grid-cols-2 gap-5">
+                  <div className="flex items-center gap-2 mb-2 text-primary">
+                    <Building2 size={18} />
+                    <span className="font-semibold">
+                      Organization
+                    </span>
+                  </div>
 
-        <div className="rounded-xl border border-border p-5">
+                  <p className="text-muted">
+                    {job.organization}
+                  </p>
 
-          <div className="flex items-center gap-2 mb-2 text-primary">
-            <Building2 size={18} />
-            <span className="font-semibold">
-              Organization
-            </span>
+                </div>
+
+                <div className="
+                    rounded-card
+                    border
+                    border-default
+                    bg-surface
+                    shadow-card
+                    transition-theme
+                    hover:-translate-y-1
+                    hover:shadow-hover
+                    p-5">
+
+                  <div className="flex items-center gap-2 mb-2 text-primary">
+                    <Wallet size={18} />
+                    <span className="font-semibold">
+                      Salary
+                    </span>
+                  </div>
+
+                  <p className="text-muted">
+                    {job.salary}
+                  </p>
+
+                </div>
+
+                <div className="
+                    rounded-card
+                    border
+                    border-default
+                    bg-surface
+                    shadow-card
+                    transition-theme
+                    hover:-translate-y-1
+                    hover:shadow-hover
+                    p-5">
+
+                  <div className="flex items-center gap-2 mb-2 text-primary">
+                    <Calendar size={18} />
+                    <span className="font-semibold">
+                      Deadline
+                    </span>
+                  </div>
+
+                  <p className="text-muted">
+                    {job.deadline}
+                  </p>
+
+                </div>
+
+                <div className="
+                  rounded-card
+                  border
+                  border-default
+                  bg-surface
+                  shadow-card
+                  transition-theme
+                  hover:-translate-y-1
+                  hover:shadow-hover
+                  p-5">
+
+                  <div className="flex items-center gap-2 mb-2 text-primary">
+                    <Briefcase size={18} />
+                    <span className="font-semibold">
+                      Experience
+                    </span>
+                  </div>
+
+                  <p className="text-muted">
+                    {job.experience}
+                  </p>
+
+                </div>
+
+              </div>
+
+            </Card>
+
+            <Card className="p-6">
+
+              <h2 className="text-2xl font-bold mb-6">
+                Job Description
+              </h2>
+
+              <p className="leading-8 text-muted">
+                {job.description}
+              </p>
+
+            </Card>
+
+            <Card className="p-6">
+
+              <h2 className="text-2xl font-bold mb-6">
+                Requirements
+              </h2>
+
+              <ul className="space-y-4">
+
+                {job.requirements.map((item) => (
+
+                  <li
+                    key={item}
+                    className="flex items-start gap-3 rounded-lg border border-default p-4"
+                  >
+
+                    <span className="text-green-600 font-bold">
+                      ✓
+                    </span>
+
+                    <span className="text-muted">
+                      {item}
+                    </span>
+
+                  </li>
+
+                ))}
+
+              </ul>
+
+            </Card>
+
           </div>
 
-          <p className="text-muted-foreground">
-            {job.organization}
-          </p>
+          {/* Sidebar */}
+
+          <aside className="
+            space-y-6
+            lg:sticky
+            lg:top-24
+            self-start
+          ">
+
+            <Card className="p-6">
+
+              <h3 className="text-xl font-semibold mb-5">
+                Contact Information
+              </h3>
+
+              <div className="space-y-5">
+
+                <div>
+                  <p className="text-sm text-muted">
+                    Organization
+                  </p>
+
+                  <p className="font-medium">
+                    {job.organization}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-sm text-muted mb-1">
+                    Email
+                  </p>
+
+                  <a
+                    href={`mailto:${job.email}`}
+                    className="inline-flex items-center gap-2 text-primary hover:underline break-all"
+                  >
+                    <Mail size={18} />
+                    {job.email}
+                  </a>
+                </div>
+
+                <div>
+                  <p className="text-sm text-muted">
+                    Deadline
+                  </p>
+
+                  <p className="font-medium">
+                    {job.deadline}
+                  </p>
+                </div>
+
+              </div>
+
+            </Card>
+
+            <Card className="p-6">
+
+              <h3 className="text-xl font-semibold mb-5">
+                Ready to Apply?
+              </h3>
+
+              <p className="text-sm text-muted mb-6">
+                Save this opportunity or contact the organization to submit your
+                application before the deadline.
+              </p>
+
+              <div className="space-y-3">
+
+                <Button
+                  onClick={() =>
+                    toast.info(
+                      "Application feature will be available in the production version."
+                    )
+                  }
+                >
+                  Apply Now
+                </Button>
+
+                <SaveOpportunityButton jobId={job.id} />
+
+              </div>
+
+            </Card>
+
+          </aside>
 
         </div>
-
-        <div className="rounded-xl border border-border p-5">
-
-          <div className="flex items-center gap-2 mb-2 text-primary">
-            <Wallet size={18} />
-            <span className="font-semibold">
-              Salary
-            </span>
-          </div>
-
-          <p className="text-muted-foreground">
-            {job.salary}
-          </p>
-
-        </div>
-
-        <div className="rounded-xl border border-border p-5">
-
-          <div className="flex items-center gap-2 mb-2 text-primary">
-            <Calendar size={18} />
-            <span className="font-semibold">
-              Deadline
-            </span>
-          </div>
-
-          <p className="text-muted-foreground">
-            {job.deadline}
-          </p>
-
-        </div>
-
-        <div className="rounded-xl border border-border p-5">
-
-          <div className="flex items-center gap-2 mb-2 text-primary">
-            <Briefcase size={18} />
-            <span className="font-semibold">
-              Experience
-            </span>
-          </div>
-
-          <p className="text-muted-foreground">
-            {job.experience}
-          </p>
-
-        </div>
-
-      </div>
-
-    </Card>
-
-    <Card className="p-6">
-
-      <h2 className="text-2xl font-bold mb-6">
-        Job Description
-      </h2>
-
-      <p className="leading-8 text-muted-foreground">
-        {job.description}
-      </p>
-
-    </Card>
-
-    <Card className="p-6">
-
-      <h2 className="text-2xl font-bold mb-6">
-        Requirements
-      </h2>
-
-      <ul className="space-y-4">
-
-        {job.requirements.map((item) => (
-
-          <li
-            key={item}
-            className="flex items-start gap-3 rounded-lg border border-border p-4"
-          >
-
-            <span className="text-green-600 font-bold">
-              ✓
-            </span>
-
-            <span className="text-muted-foreground">
-              {item}
-            </span>
-
-          </li>
-
-        ))}
-
-      </ul>
-
-    </Card>
-
-  </div>
-
-  {/* Sidebar */}
-
-  <aside className="space-y-6">
-
-    <Card className="p-6">
-
-      <h3 className="text-xl font-semibold mb-5">
-        Contact Information
-      </h3>
-
-      <div className="space-y-5">
-
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Organization
-          </p>
-
-          <p className="font-medium">
-            {job.organization}
-          </p>
-        </div>
-
-        <div>
-          <p className="text-sm text-muted-foreground mb-1">
-            Email
-          </p>
-
-          <a
-            href={`mailto:${job.email}`}
-            className="inline-flex items-center gap-2 text-primary hover:underline break-all"
-          >
-            <Mail size={18} />
-            {job.email}
-          </a>
-        </div>
-
-        <div>
-          <p className="text-sm text-muted-foreground">
-            Deadline
-          </p>
-
-          <p className="font-medium">
-            {job.deadline}
-          </p>
-        </div>
-
-      </div>
-
-    </Card>
-
-    <Card className="p-6">
-
-      <h3 className="text-xl font-semibold mb-5">
-        Ready to Apply?
-      </h3>
-
-      <p className="text-sm text-muted-foreground mb-6">
-        Save this opportunity or contact the organization to submit your
-        application before the deadline.
-      </p>
-
-      <div className="space-y-3">
-
-        <Button className="w-full">
-          Apply Now
-        </Button>
-
-        <SaveOpportunityButton jobId={job.id} />
-
-      </div>
-
-    </Card>
-
-  </aside>
-
-</div>
 
       </div>
 
       {/* Related Opportunities */}
 
-      <section className="mt-16">
+      <section className="mt-16 mx-auto max-w-7xl">
 
         <div className="flex items-center justify-between mb-8">
 
           <div>
 
-            <h2 className="text-3xl font-bold">
+            <h2 className="text-3xl font-bold p-4">
               Related Opportunities
             </h2>
 
-            <p className="text-muted-foreground mt-2">
+            <p className="text-muted font-simibold text-lg mt-2 pl-6">
               Similar opportunities you may be interested in.
             </p>
 
@@ -392,7 +441,7 @@ export default function OpportunityDetailsClient({
 
           <Link
             href="/opportunities"
-            className="text-primary hover:underline"
+            className="text-primary hover:underline pr-10"
           >
             View All
           </Link>
@@ -424,13 +473,13 @@ export default function OpportunityDetailsClient({
 
         ) : (
 
-          <Card className="p-8 text-center">
+          <Card className="p-8 text-center transition-theme">
 
             <h3 className="text-xl font-semibold mb-2">
               No Related Opportunities
             </h3>
 
-            <p className="text-muted-foreground">
+            <p className="text-muted">
               More opportunities will appear here soon.
             </p>
 

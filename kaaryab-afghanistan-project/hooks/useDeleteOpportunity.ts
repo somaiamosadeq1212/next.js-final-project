@@ -6,7 +6,7 @@ import { deleteOpportunity } from "@/lib/mockApi";
 export function useDeleteOpportunity() {
   const [loading, setLoading] = useState(false);
 
-  const remove = async (id: string) => {
+  const remove = async (id: number) => {
     setLoading(true);
 
     try {

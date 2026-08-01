@@ -1,5 +1,6 @@
 import { jobs } from "@/app/data/jobs";
 import { Opportunity } from "@/components/types/opportunity";
+import { normalizeText } from "@/lib/utils";
 
 const STORAGE_KEY = "opportunities";
 
@@ -24,8 +25,6 @@ function writeDB(data: Opportunity[]) {
 
 const delay = (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));
-
-// let db: Opportunity[] = [...jobs];
 
 function clone<T>(data: T): T {
   return structuredClone(data);
@@ -68,7 +67,6 @@ function validateOpportunity(values: Partial<Opportunity>) {
 export async function getOpportunities(): Promise<Opportunity[]> {
   await delay(500);
 
-  // return clone(db);
   return clone(readDB());
 }
 
@@ -95,6 +93,8 @@ export async function createOpportunity(
 
   const newOpportunity: Opportunity = {
     ...data,
+    category: normalizeText(data.category),
+    location: normalizeText(data.location),
     id: Date.now(),
   };
 
@@ -107,6 +107,7 @@ export async function createOpportunity(
 }
 
 export async function updateOpportunity(
+  
   id: number,
   values: Partial<Opportunity>
 ) {
@@ -125,6 +126,14 @@ export async function updateOpportunity(
   db[index] = {
     ...db[index],
     ...values,
+    
+    category: values.category
+    ? normalizeText(values.category)
+    : db[index].category,
+
+  location: values.location
+    ? normalizeText(values.location)
+    : db[index].location,
   };
 
   writeDB(db);
@@ -137,7 +146,7 @@ export async function deleteOpportunity(
 ) {
   await delay(500);
 
-   const db = readDB();
+  const db = readDB();
 
   const exists = db.some((item) => item.id === id);
 
@@ -145,11 +154,9 @@ export async function deleteOpportunity(
     throw new Error("Opportunity not found.");
   }
 
-  // db = db.filter((item) => item.id !== id);
+  const updated = db.filter((item) => item.id !== id);
 
-const updated = db.filter((item) => item.id !== id);
-
-writeDB(updated);
+  writeDB(updated);
 
   return true;
 }

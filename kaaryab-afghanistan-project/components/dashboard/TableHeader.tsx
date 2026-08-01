@@ -31,7 +31,7 @@ export default function TableHeader({
           Deadline
         </th>
 
-        <th className="px-6 py-4 text-center">
+        <th className="px-6 py-4 text-left">
           Actions
         </th>
 

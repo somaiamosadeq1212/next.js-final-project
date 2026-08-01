@@ -16,178 +16,178 @@ import { Opportunity } from "@/components/types/opportunity";
 import { appToast } from "@/lib/toast";
 
 export function useOpportunity(id?: number) {
-   const router = useRouter();
+  const router = useRouter();
 
-const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-const [error, setError] = useState("");
+  const [error, setError] = useState("");
 
-const [opportunity, setOpportunity] =
-  useState<Opportunity | null>(null);
+  const [opportunity, setOpportunity] =
+    useState<Opportunity | null>(null);
 
-const [opportunities, setOpportunities] =
-  useState<Opportunity[]>([]);
+  const [opportunities, setOpportunities] =
+    useState<Opportunity[]>([]);
 
-const refresh = async () => {
-  if (id) {
-    await loadOpportunity();
-  } else {
-    await loadOpportunities();
-  }
-};
-
-   useEffect(() => {
-  if (id) {
-    loadOpportunity();
-  } else {
-    loadOpportunities();
-  }
-}, [id]);
-
-    async function loadOpportunity() {
-  try {
-    setLoading(true);
-    setError("");
-
-    const data = await getOpportunity(id!);
-
-    if (data) {
-      setOpportunity(data);
+  const refresh = async () => {
+    if (id) {
+      await loadOpportunity();
+    } else {
+      await loadOpportunities();
     }
-  } catch {
-    setError("Unable to load opportunity.");
-  } finally {
-    setLoading(false);
+  };
+
+  useEffect(() => {
+    if (id) {
+      loadOpportunity();
+    } else {
+      loadOpportunities();
+    }
+  }, [id]);
+
+  async function loadOpportunity() {
+    try {
+      setLoading(true);
+      setError("");
+
+      const data = await getOpportunity(id!);
+
+      if (data) {
+        setOpportunity(data);
+      }
+    } catch {
+      setError("Unable to load opportunity.");
+    } finally {
+      setLoading(false);
+    }
   }
-}
 
-    async function loadOpportunities() {
-  try {
-    setLoading(true);
-    setError("");
+  async function loadOpportunities() {
+    try {
+      setLoading(true);
+      setError("");
 
-    const data = await getOpportunities();
+      const data = await getOpportunities();
 
-    setOpportunities(data);
-  } catch {
-    setError("Unable to load opportunities.");
-  } finally {
-    setLoading(false);
+      setOpportunities(data);
+    } catch {
+      setError("Unable to load opportunities.");
+    } finally {
+      setLoading(false);
+    }
   }
-}
 
-async function handleCreate(data: Omit<Opportunity, "id">) {
-  const toastId = appToast.loading("Creating opportunity...");
+  async function handleCreate(data: Omit<Opportunity, "id">) {
+    const toastId = appToast.loading("Creating opportunity...");
 
-  try {
-    setLoading(true);
+    try {
+      setLoading(true);
 
-    await createOpportunity(data);
+      await createOpportunity(data);
 
-    appToast.dismiss(toastId);
+      appToast.dismiss(toastId);
 
-    appToast.success("Opportunity created successfully.");
+      appToast.success("Opportunity created successfully.");
 
-    await loadOpportunities();
+      await loadOpportunities();
 
-    router.push("/dashboard/opportunities");
+      router.push("/dashboard/opportunities");
 
-    return true;
-  } catch {
-    appToast.dismiss(toastId);
+      return true;
+    } catch {
+      appToast.dismiss(toastId);
 
-    appToast.error("Unable to create opportunity.");
+      appToast.error("Unable to create opportunity.");
 
-    return false;
-  } finally {
-    setLoading(false);
+      return false;
+    } finally {
+      setLoading(false);
+    }
   }
-}
 
-async function handleUpdate(data: Partial<Opportunity>) {
-  const toastId = appToast.loading("Updating opportunity...");
+  async function handleUpdate(data: Partial<Opportunity>) {
+    const toastId = appToast.loading("Updating opportunity...");
 
-  try {
-    setLoading(true);
+    try {
+      setLoading(true);
 
-    const payload: Partial<Opportunity> = {
-  ...data,
-  requirements: data.requirements
-    .split("\n")
-    .map((item) => item.trim())
-    .filter(Boolean),
-};
+      const payload: Partial<Opportunity> = {
+        ...data,
+        requirements: data.requirements
+          .split("\n")
+          .map((item) => item.trim())
+          .filter(Boolean),
+      };
 
-    await updateOpportunity(id!, payload);
+      await updateOpportunity(id!, payload);
 
-    await loadOpportunity();
+      await loadOpportunity();
 
-    appToast.dismiss(toastId);
+      appToast.dismiss(toastId);
 
-    appToast.success("Opportunity updated successfully.");
+      appToast.success("Opportunity updated successfully.");
 
-    router.push("/dashboard/opportunities");
+      router.push("/dashboard/opportunities");
 
-    return true;
-  } catch {
-    appToast.dismiss(toastId);
+      return true;
+    } catch {
+      appToast.dismiss(toastId);
 
-    appToast.error("Unable to update opportunity.");
+      appToast.error("Unable to update opportunity.");
 
-    setError("Unable to update opportunity.");
+      setError("Unable to update opportunity.");
 
-    return false;
-  } finally {
-    setLoading(false);
+      return false;
+    } finally {
+      setLoading(false);
+    }
   }
-}
 
-async function handleDelete(id: number) {
-  const toastId = appToast.loading("Deleting opportunity...");
+  async function handleDelete(id: number) {
+    const toastId = appToast.loading("Deleting opportunity...");
 
-  try {
-    setLoading(true);
+    try {
+      setLoading(true);
 
-    await deleteOpportunity(id);
+      await deleteOpportunity(id);
 
-    appToast.dismiss(toastId);
+      appToast.dismiss(toastId);
 
-    appToast.success("Opportunity deleted.");
+      appToast.success("Opportunity deleted.");
 
-    await loadOpportunities();
+      await loadOpportunities();
 
-    return true;
-  } catch {
-    appToast.dismiss(toastId);
+      return true;
+    } catch {
+      appToast.dismiss(toastId);
 
-    appToast.error("Unable to delete opportunity.");
+      appToast.error("Unable to delete opportunity.");
 
-    return false;
-  } finally {
-    setLoading(false);
+      return false;
+    } finally {
+      setLoading(false);
+    }
   }
-}
 
-// async function refresh() {
-//   if (id) {
-//     await loadOpportunity();
-//   } else {
-//     await loadOpportunities();
-//   }
-// }
+  // async function refresh() {
+  //   if (id) {
+  //     await loadOpportunity();
+  //   } else {
+  //     await loadOpportunities();
+  //   }
+  // }
 
-return {
-  loading,
-  error,
+  return {
+    loading,
+    error,
 
-  opportunity,
-  opportunities,
+    opportunity,
+    opportunities,
 
-  createOpportunity: handleCreate,
-  updateOpportunity: handleUpdate,
-  deleteOpportunity: handleDelete,
+    createOpportunity: handleCreate,
+    updateOpportunity: handleUpdate,
+    deleteOpportunity: handleDelete,
 
-  refresh,
-};
+    refresh,
+  };
 
 }

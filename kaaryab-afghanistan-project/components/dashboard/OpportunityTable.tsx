@@ -1,20 +1,21 @@
 "use client";
 
-import OpportunityToolbar from "./OpportunityToolbar";
-import OpportunityDesktop from "./OpportunityDesktop";
-import OpportunityMobile from "./OpportunityMobile";
-import Pagination from "./Pagination";
+import { useOpportunityTable } from "@/hooks/OpportunityTable";
 import DeleteDialog from "./DeleteDialog";
 import EmptyState from "./DashboardEmptyState";
+import OpportunityDesktop from "./OpportunityDesktop";
+import OpportunityMobile from "./OpportunityMobile";
+import OpportunityToolbar from "./OpportunityToolbar";
+import Pagination from "./Pagination";
 import TableSkeleton from "./TableSkeleton";
-import { useOpportunityTable } from "@/hooks/OpportunityTable";
-
 
 export default function OpportunityTable() {
   const table = useOpportunityTable();
 
+  // Display loading state while opportunities are being fetched.
   if (table.loading) return <TableSkeleton />;
 
+  // Show an empty state when no opportunities are available.
   if (!table.total) return <EmptyState />;
 
   return (

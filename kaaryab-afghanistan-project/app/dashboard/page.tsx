@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import ChartCard from "@/components/dashboard/ChartCard";
 import DashboardStats from "@/components/dashboard/DashboardStats";
 import RecentTable from "@/components/dashboard/RecentTable";
@@ -12,6 +11,7 @@ import {
   ChartDataItem,
 } from "@/lib/dashboard";
 
+// Dashboard overview with stats, charts, and recent opportunities.
 export default function DashboardPage() {
   const [monthlyData, setMonthlyData] = useState<ChartDataItem[]>([]);
   const [categoryData, setCategoryData] = useState<ChartDataItem[]>([]);

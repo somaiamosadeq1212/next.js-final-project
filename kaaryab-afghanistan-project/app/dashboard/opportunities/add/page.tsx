@@ -1,29 +1,22 @@
 "use client";
 
-// import { useRouter } from "next/navigation";
-
 import OpportunityForm from "@/components/forms/OpportunityForm";
 import type { OpportunitySchema } from "@/lib/validation/opportunity-schema";
 import { useOpportunity } from "@/hooks/useOpportunity";
 
 export default function AddOpportunityPage() {
-  // const router = useRouter();
-
   const { createOpportunity, loading } = useOpportunity();
-
 
   const handleSubmit = async (data: OpportunitySchema) => {
     await createOpportunity(data);
 
-    // router.push("/opportunities");
   };
 
   return (
-    <main className="mx-auto max-w-5xl px-6 py-14">
-
+    <main className="mx-auto w-full max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-10">
 
-        <h1 className="text-4xl font-bold">
+        <h1 className="text-3xl font-bold sm:text-4xl">
           Add Opportunity
         </h1>
 

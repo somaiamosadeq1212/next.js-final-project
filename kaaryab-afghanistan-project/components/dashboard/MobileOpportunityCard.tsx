@@ -2,14 +2,14 @@
 
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
-
-import { Pencil, Trash2 } from "lucide-react";
+import { Eye, Pencil, Trash2 } from "lucide-react";
 import { Opportunity } from "../types/opportunity";
+import Link from "next/link";
 
 type Props = {
   opportunity: Opportunity;
 
-  onDelete: (id: string) => void;
+  onDelete: (id: number) => void;
 };
 
 export default function MobileOpportunityCard({
@@ -19,11 +19,11 @@ export default function MobileOpportunityCard({
   return (
     <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
 
-      <div className="flex items-start justify-between">
+      <div className="flex items-start justify-between gap-3">
 
-        <div>
+        <div className="min-w-0 flex-1">
 
-          <h3 className="font-semibold">
+          <h3 className="font-semibold truncate">
             {opportunity.title}
           </h3>
 
@@ -33,13 +33,13 @@ export default function MobileOpportunityCard({
 
         </div>
 
-        <Badge>
+        <Badge className="shrink-0">
           {opportunity.category}
         </Badge>
 
       </div>
 
-      <div className="mt-5 flex items-center justify-between">
+      <div className="mt-5 flex items-center justify-between gap-3">
 
         <span className="text-sm text-muted-foreground">
           {opportunity.deadline}
@@ -47,12 +47,23 @@ export default function MobileOpportunityCard({
 
         <div className="flex gap-2">
 
-          <Button
-            variant="outline"
-            size="sm"
-          >
-            <Pencil className="h-4 w-4" />
-          </Button>
+          <Link href={`/opportunities/${opportunity.id}`}>
+            <Button
+              variant="secondary"
+              size="sm"
+            >
+              <Eye className="h-4 w-4" />
+            </Button>
+          </Link>
+
+          <Link href={`/dashboard/opportunities/${opportunity.id}/edit`}>
+            <Button
+              variant="outline"
+              size="sm"
+            >
+              <Pencil className="h-4 w-4" />
+            </Button>
+          </Link>
 
           <Button
             variant="destructive"

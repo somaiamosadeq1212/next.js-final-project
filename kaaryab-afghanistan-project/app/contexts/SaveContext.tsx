@@ -2,8 +2,6 @@
 
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
-// const SaveContext = createContext;
-
 type SaveContextType = {
     savedJobs: number[];
     saveJob: (id:number) => void;

@@ -1,11 +1,12 @@
 import { ReactNode } from "react";
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
 
 type ContainerProps = {
   children: ReactNode;
   className?: string;
 };
 
+// Reusable layout container that keeps content centered with a consistent max width and responsive padding.
 export default function Container({
   children,
   className,
@@ -16,7 +17,6 @@ export default function Container({
                 mx-auto
                 w-full
                 max-w-7xl
-
                 px-4
                 sm:px-6
                 lg:px-8

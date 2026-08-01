@@ -10,11 +10,16 @@
 
   --color-primary: #2563eb;
   --color-primary-hover: #1d4ed8;
+  --color-primary-light: #dbeafe;
+  --color-on-primary: #ffffff;
+  --destructive: #dc2626;
 
   /* Background */
 
   --color-background: #f8fafc;
   --color-surface: #ffffff;
+  --color-muted: #f1f5f9;
+  --color-muted-hover: #e2e8f0;
 
   /* Text */
 
@@ -31,6 +36,17 @@
   --color-warning: #d97706;
   --color-danger: #dc2626;
 
+  /* ============================= */
+  /* Hero */
+  /* ============================= */
+
+  --hero-gradient:
+    linear-gradient(
+      135deg,
+      #eff6ff 0%,
+      #ffffff 100%
+    );
+
   /* Radius */
 
   --radius-sm: 10px;
@@ -42,35 +58,84 @@
   --shadow-card:
       0 4px 12px rgba(15,23,42,.06);
 
+  --shadow-hover:
+      0 10px 25px rgba(15,23,42,.12);
+
   /* Transition */
 
 --transition-fast: 150ms;
 --transition-normal: 250ms;
 
-/* Hover Shadow */
-
---shadow-hover:
-0 10px 25px rgba(15,23,42,.12);
-
 }
 
 .dark {
 
-  --color-background:#020617;
+   /* Brand */
 
+  --color-primary-light:#1e3a8a;
+  --color-on-primary:#ffffff;
+
+   /* Destructive */
+
+  --destructive:#ef4444;
+
+  /* Background */
+
+  --color-background:#020617;
   --color-surface:#0f172a;
+  --color-muted:#1e293b;
+  --color-muted-hover:#334155;
+
+  /* Text */
 
   --color-text:#f8fafc;
-
   --color-text-muted:#94a3b8;
+
+  /* Border */
 
   --color-border:#334155;
 
+  /* Hero */
+
+  --hero-gradient:
+    linear-gradient(
+      135deg,
+      #020617 0%,
+      #0f172a 100%
+    );
+
+  /* Shadow */
+
   --shadow-card:
       0 6px 18px rgba(0,0,0,.45);
+
   --shadow-hover:
       0 10px 25px rgba(0,0,0,.45);
 
+}
+
+/* ============================= */
+/* Base */
+/* ============================= */
+
+@layer base {
+
+  html {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-text);
+
+    transition:
+      background-color var(--transition-normal),
+      color var(--transition-normal);
+  }
 }
 
 /* Utilities */
@@ -88,6 +153,18 @@ background:var(--color-surface);
 
 .text-primary{
 color:var(--color-primary);
+}
+
+.text-destructive{
+color:var(--destructive);
+}
+
+.bg-destructive{
+background:var(--destructive);
+}
+
+.border-destructive{
+border-color:var(--destructive);
 }
 
 .text-default{
@@ -130,7 +207,20 @@ box-shadow:var(--shadow-hover);
   color:var(--color-on-primary);
 }
 
+.bg-muted{
+background:var(--color-muted);
 }
 
+.hover-bg-muted:hover{
+background:var(--color-muted-hover);
+}
 
+.transition-theme{
+transition:
+background-color var(--transition-normal),
+color var(--transition-normal),
+border-color var(--transition-normal),
+box-shadow var(--transition-normal);
+}
 
+}

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Eye, Pencil, Trash2 } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
-// import StatusBadge from "./StatusBadge";
 import DeadlineBadge from "./DeadlineBadge";
 import { Opportunity } from "@/components/types/opportunity";
 
@@ -13,49 +12,47 @@ type OpportunityRowProps = {
   onDelete: (id: number) => void;
 };
 
-
-
 export default function OpportunityRow({
   opportunity,
   onDelete,
 }: OpportunityRowProps) {
-  
-  return (
-    <tr className="border-b border-border hover:bg-muted/40 transition-colors">
 
-      <td className="px-6 py-5 font-medium">
-        {opportunity.title}
+  return (
+    <tr className="border-b border-border hover:bg-muted/40 transition-theme">
+
+      <td className="max-w-xs px-4 py-4 xl:px-6 xl:py-5">
+        <p className="truncate font-medium">
+          {opportunity.title}
+        </p>
       </td>
 
-      <td className="px-6 py-5">
+      <td className="px-4 py-4 xl:px-6 xl:py-5">
         <Badge>{opportunity.category}</Badge>
       </td>
 
-      <td className="px-6 py-5">
-        {opportunity.organization}
+      <td className="max-w-[220px] px-4 py-4 xl:px-6 xl:py-5">
+        <p className="truncate">
+          {opportunity.organization}
+        </p>
       </td>
 
-      {/* <td className="px-6 py-5">
-  <StatusBadge status={opportunity.status} />
-</td> */}
+      <td className="px-4 py-4 xl:px-6 xl:py-5">
+        <DeadlineBadge
+          deadline={opportunity.deadline}
+        />
+      </td>
 
-<td className="px-6 py-5">
-  <DeadlineBadge
-    deadline={opportunity.deadline}
-  />
-</td>
-
-      <td className="px-6 py-5">
-        <div className="flex items-center gap-2">
+      <td className="px-4 py-4 xl:px-6 xl:py-5">
+        <div className="flex items-center justify-end gap-2 whitespace-nowrap">
 
           <Link href={`/opportunities/${opportunity.id}`}>
-  <Button
-    variant="secondary"
-    size="sm"
-  >
-    <Eye className="h-4 w-4" />
-  </Button>
-</Link>
+            <Button
+              variant="secondary"
+              size="sm"
+            >
+              <Eye className="h-4 w-4" />
+            </Button>
+          </Link>
 
           <Link href={`/dashboard/opportunities/${opportunity.id}/edit`}>
             <Button

@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 
 type SelectProps = SelectHTMLAttributes<HTMLSelectElement>;
 
+// Reusable select component with shared styles for forms and filters.
 export default function Select({
   className,
   children,
@@ -17,27 +18,17 @@ export default function Select({
         w-full
         rounded-xl
         border
-        border-slate-300
-        bg-white
+        border-default
+        bg-background
         px-4
         py-3
-        text-slate-900
-        shadow-sm
-        transition-all
-        duration-200
-
+        text-default
         hover:border-slate-400
-
-        focus:border-blue-600
         focus:outline-none
-        focus:ring-4
-        focus:ring-blue-100
-
-        dark:border-slate-700
-        dark:bg-slate-900
-        dark:text-white
-        dark:hover:border-slate-600
-        dark:focus:ring-blue-900/30
+        focus:ring-2
+        focus:ring-primary/20
+        focus:border-primary
+        transition-theme
         `,
         className
       )}

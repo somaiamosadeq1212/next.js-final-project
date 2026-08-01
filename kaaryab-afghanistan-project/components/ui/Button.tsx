@@ -1,7 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Link, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import Link from "next/link";
 import { ButtonHTMLAttributes, ReactNode } from "react";
 
 type ButtonVariant =
@@ -11,7 +12,7 @@ type ButtonVariant =
   | "ghost"
   | "danger"
   | "destructive";
-  
+
 
 type ButtonSize =
   | "sm"
@@ -40,39 +41,39 @@ export default function Button({
   leftIcon,
   rightIcon,
   disabled,
-   href,
+  href,
   ...props
 }: ButtonProps) {
 
   const variants = {
-        primary:
-            "bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover)]",
+    primary:
+      "bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover)]",
 
-        secondary:
-            "bg-surface text-default border border-default hover:bg-gray-100 dark:hover:bg-slate-800",
+    secondary:
+      "bg-surface text-default border border-default hover:bg-gray-100 dark:hover:bg-slate-800",
 
-        danger:
-            "bg-[var(--color-danger)] text-white hover:opacity-90",
+    danger:
+      "bg-[var(--color-danger)] text-white hover:opacity-90",
 
-        outline:
-            "bg-transparent border border-default text-default hover:bg-gray-100 dark:hover:bg-slate-800",
-        ghost:
-            "bg-transparent text-default hover:bg-slate-100 dark:hover:bg-slate-800",
+    outline:
+      "bg-transparent border border-default text-default hover:bg-gray-100 dark:hover:bg-slate-800",
+    ghost:
+      "bg-transparent text-default hover:bg-slate-100 dark:hover:bg-slate-800",
 
-        destructive:
-    "bg-[var(--color-danger)] text-white hover:opacity-90",
+    destructive:
+      "bg-[var(--color-danger)] text-white hover:opacity-90",
 
-    };
+  };
 
-    const sizes = {
+  const sizes = {
     sm: "h-9 px-3 sm:px-4 text-sm",
 
     md: "h-11 px-4 sm:px-5 text-sm",
 
     lg: "h-12 px-5 sm:px-6 text-sm sm:text-base",
-};
+  };
 
-const classes = cn(
+  const classes = cn(
 
     "inline-flex items-center justify-center gap-2",
 
@@ -80,13 +81,13 @@ const classes = cn(
 
     "font-medium",
 
-    "transition-all duration-300",
+    "transition-theme",
 
     "shadow-card",
 
     "hover:-translate-y-0.5 hover:shadow-hover",
 
-    "focus:outline-none focus:ring-4 focus:ring-blue-200",
+    "focus:outline-none focus:ring-4 focus:ring-primary/20",
 
     "disabled:pointer-events-none disabled:opacity-50",
 
@@ -122,8 +123,8 @@ const classes = cn(
     );
   }
 
-    return (
-         <button
+  return (
+    <button
       className={classes}
       disabled={loading || disabled}
       {...props}
@@ -141,5 +142,5 @@ const classes = cn(
 
       {!loading && rightIcon}
     </button>
-    );
+  );
 }

@@ -42,16 +42,18 @@ export default function OpportunityForm({
         border
         border-border
         bg-card
-        p-8
+        p-5
+        sm:p-6
+        lg:p-8
         shadow-sm
         dark:border-slate-800
         dark:bg-slate-900
       "
     >
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {/* Title */}
         <div>
-          <label className="mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-default">
             Opportunity Title
           </label>
 
@@ -69,7 +71,7 @@ export default function OpportunityForm({
 
         {/* Organization */}
         <div>
-          <label className="mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-default">
             Organization
           </label>
 
@@ -87,7 +89,7 @@ export default function OpportunityForm({
 
         {/* Location */}
         <div>
-          <label className="mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-default">
             Location
           </label>
 
@@ -105,7 +107,7 @@ export default function OpportunityForm({
 
         {/* Category */}
         <div>
-          <label className="mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-default">
             Category
           </label>
 
@@ -123,7 +125,7 @@ export default function OpportunityForm({
 
         {/* Type */}
         <div>
-          <label className="mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-default">
             Opportunity Type
           </label>
 
@@ -141,7 +143,7 @@ export default function OpportunityForm({
 
         {/* Salary */}
         <div>
-          <label className="mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-default">
             Salary
           </label>
 
@@ -159,7 +161,7 @@ export default function OpportunityForm({
 
         {/* Experience */}
         <div>
-          <label className="mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-default">
             Experience
           </label>
 
@@ -177,7 +179,7 @@ export default function OpportunityForm({
 
         {/* Email */}
         <div>
-          <label className="mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-default">
             Contact Email
           </label>
 
@@ -196,7 +198,7 @@ export default function OpportunityForm({
 
         {/* Deadline */}
         <div>
-          <label className="mb-2 block text-sm font-medium">
+          <label className="mb-2 block text-sm font-medium text-default">
             Deadline
           </label>
 
@@ -215,7 +217,7 @@ export default function OpportunityForm({
 
       {/* Description */}
       <div>
-        <label className="mb-2 block text-sm font-medium">
+        <label className="mb-2 block text-sm font-medium text-default">
           Description
         </label>
 
@@ -231,7 +233,8 @@ export default function OpportunityForm({
             px-4
             py-3
             outline-none
-            transition
+            transition-theme
+            resize-y
             focus:border-primary
             dark:border-slate-700
             dark:bg-slate-950
@@ -247,7 +250,7 @@ export default function OpportunityForm({
 
       {/* Requirements */}
       <div>
-        <label className="mb-2 block text-sm font-medium">
+        <label className="mb-2 block text-sm font-medium text-default">
           Requirements
         </label>
 
@@ -280,7 +283,7 @@ export default function OpportunityForm({
 
       {/* Apply URL */}
       <div>
-        <label className="mb-2 block text-sm font-medium">
+        <label className="mb-2 block text-sm font-medium text-default">
           Apply URL
         </label>
 

@@ -11,9 +11,7 @@ export default function ResultHeader({
 }: ResultHeaderProps) {
   return (
     <div className="mb-8 flex flex-col gap-4 border-b border-default pb-6 md:flex-row md:items-center md:justify-between">
-
       <div className="flex items-center gap-3">
-
         <div className="rounded-xl bg-primary/10 p-3 text-primary">
           <BriefcaseBusiness className="h-5 w-5" />
         </div>
@@ -31,7 +29,6 @@ export default function ResultHeader({
         </div>
 
       </div>
-
     </div>
   );
 }

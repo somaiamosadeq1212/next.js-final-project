@@ -25,7 +25,7 @@ export interface Opportunity {
 
   featured?: boolean;
 
-  applyUrl: string;
+  applyUrl?: string;
 
   tags?: string[];
 

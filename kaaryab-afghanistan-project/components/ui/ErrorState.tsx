@@ -1,3 +1,6 @@
+import { AlertTriangle } from "lucide-react";
+import Button from "@/components/ui/Button";
+
 type ErrorStateProps = {
   title?: string;
   message?: string;
@@ -10,24 +13,70 @@ export default function ErrorState({
   onRetry,
 }: ErrorStateProps) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-red-200 bg-red-50 p-10 text-center">
-      <div className="mb-4 text-5xl">⚠️</div>
+    <div
+      className="
+        flex
+        flex-col
+        items-center
+        justify-center
+        rounded-2xl
+        border
+        border-default
+        bg-card
+        px-8
+        py-12
+        text-center
+      "
+    >
+      <div
+        className="
+          mb-5
+          flex
+          h-16
+          w-16
+          items-center
+          justify-center
+          rounded-full
+          bg-destructive/10
+        "
+      >
+        <AlertTriangle
+          className="
+            h-8
+            w-8
+            text-destructive
+          "
+        />
+      </div>
 
-      <h2 className="mb-2 text-xl font-semibold text-red-700">
+      <h2
+        className="
+          text-xl
+          font-semibold
+          text-default
+        "
+      >
         {title}
       </h2>
 
-      <p className="mb-6 max-w-md text-sm text-red-600">
+      <p
+        className="
+          mt-3
+          max-w-md
+          text-sm
+          text-muted
+        "
+      >
         {message}
       </p>
 
       {onRetry && (
-        <button
+        <Button
           onClick={onRetry}
-          className="rounded-lg bg-red-600 px-5 py-2 text-white transition hover:bg-red-700"
+          className="mt-8"
         >
           Try Again
-        </button>
+        </Button>
       )}
     </div>
   );

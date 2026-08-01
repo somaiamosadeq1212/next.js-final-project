@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-
+import { useSearchParams } from "next/navigation";
 import CTASection from "@/components/home/CTASection";
 import HeroSection from "@/components/opportunity/HeroSection";
 import SearchBar from "@/components/opportunity/SearchBar";
@@ -9,18 +9,21 @@ import FilterBar from "@/components/opportunity/FilterBar";
 import CategoryTabs from "@/components/CategoryTabs";
 import OpportunityGrid from "@/components/OpportunityGrid";
 import ResultHeader from "@/components/opportunity/ResultHeader";
-
 import { Opportunity } from "@/components/types/opportunity";
 import { getOpportunities } from "@/lib/mockApi";
+import { Container } from "@/components/ui";
 
 export default function Opportunities() {
   const [jobs, setJobs] = useState<Opportunity[]>([]);
   const [loading, setLoading] = useState(true);
-
-  const [search, setSearch] = useState("");
+  const searchParams = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedType, setSelectedType] = useState("All");
   const [selectedLocation, setSelectedLocation] = useState("All");
+
+  const [search, setSearch] = useState(
+    searchParams.get("search") ?? ""
+  );
 
   useEffect(() => {
     async function loadJobs() {
@@ -100,36 +103,43 @@ export default function Opportunities() {
     <main className="bg-background">
       <HeroSection />
 
-      <section className="container py-10 md:py-14">
-        <SearchBar
-          search={search}
-          onSearch={setSearch}
-        />
+      <section className="py-10 md:py-14">
+        <Container>
+          <SearchBar
+            search={search}
+            onSearch={setSearch}
+          />
+        </Container>
       </section>
 
-      <section className="container">
-        <FilterBar
-          categories={categories}
-          types={types}
-          locations={locations}
-          selectedCategory={selectedCategory}
-          selectedType={selectedType}
-          selectedLocation={selectedLocation}
-          setSelectedCategory={setSelectedCategory}
-          setSelectedType={setSelectedType}
-          setSelectedLocation={setSelectedLocation}
-        />
+      <section>
+        <Container>
+          <FilterBar
+            categories={categories}
+            types={types}
+            locations={locations}
+            selectedCategory={selectedCategory}
+            selectedType={selectedType}
+            selectedLocation={selectedLocation}
+            setSelectedCategory={setSelectedCategory}
+            setSelectedType={setSelectedType}
+            setSelectedLocation={setSelectedLocation}
+          />
+        </Container>
       </section>
 
-      <section className="container mt-8">
-        <CategoryTabs
-          categories={categories}
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-        />
+      <section className="mt-8">
+        <Container>
+          <CategoryTabs
+            categories={categories}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+          />
+        </Container>
       </section>
 
-      <section className="container mt-10 pb-20">
+      <section className="mt-10 pb-20">
+        <Container>
         <ResultHeader total={filteredJobs.length} />
 
         {loading ? (
@@ -139,6 +149,7 @@ export default function Opportunities() {
         ) : (
           <OpportunityGrid jobs={filteredJobs} />
         )}
+        </Container>
       </section>
 
       <CTASection />

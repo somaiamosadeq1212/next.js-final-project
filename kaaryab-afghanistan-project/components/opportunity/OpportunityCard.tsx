@@ -13,7 +13,7 @@ import {
 
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
-import {Card} from "@/components/ui/Card";
+import { Card } from "@/components/ui/Card";
 import SaveOpportunityButton from "@/components/SaveOpportunityButton";
 import { Avatar } from "@/components/ui";
 
@@ -79,7 +79,7 @@ export default function OpportunityCard({
           <SaveOpportunityButton jobId={id} />
         </div>
 
-        
+
 
       </div>
 
