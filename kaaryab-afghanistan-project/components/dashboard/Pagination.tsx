@@ -66,7 +66,7 @@ export default function Pagination({
           key={page}
           variant={
             currentPage === page
-              ? "default"
+              ? "primary"
               : "outline"
           }
           onClick={() => onPageChange(page)}

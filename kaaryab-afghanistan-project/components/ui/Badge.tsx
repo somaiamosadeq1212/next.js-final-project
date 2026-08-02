@@ -9,6 +9,8 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
     | "outline"
     | "ghost"
     | "danger"
+    | "warning"
+    | "success"
     | "destructive";
 }
 
@@ -52,6 +54,10 @@ export default function Badge({
 
         variant === "destructive" &&
           "bg-[var(--color-danger)] text-white",
+        variant === "warning" &&
+          "bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300",
+        variant === "success" &&
+          "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300",
 
         className
       )}

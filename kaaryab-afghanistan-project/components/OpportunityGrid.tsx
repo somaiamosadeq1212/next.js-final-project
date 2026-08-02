@@ -1,10 +1,12 @@
 import OpportunityCard from "./opportunity/OpportunityCard";
 import EmptyState from "./EmptyState";
-import { Job } from "@/app/data/jobs";
+// import { Job } from "@/app/data/jobs";
+
+import { Opportunity } from "@/components/types/opportunity";
 
 
 type OpportunityGridProps = {
-    jobs: Job[];
+    jobs: Opportunity[];
 };
 
 export default function OpportunityGrid({

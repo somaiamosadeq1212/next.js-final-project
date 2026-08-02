@@ -51,7 +51,7 @@ export default function EditOpportunityPage() {
     deadline: opportunity.deadline,
     description: opportunity.description,
     requirements: opportunity.requirements.join("\n"),
-    applyUrl: opportunity.applyUrl,
+    applyUrl: opportunity.applyUrl?? "",
   };
 
   return (

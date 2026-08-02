@@ -11,6 +11,7 @@ import {
   deleteOpportunity,
 } from "@/lib/mockApi";
 
+import type { OpportunitySchema } from "@/lib/validation/opportunity-schema";
 import { Opportunity } from "@/components/types/opportunity";
 // import { OpportunityFormValues } from "@/lib/validation/opportunity-schema";
 import { appToast } from "@/lib/toast";
@@ -76,35 +77,78 @@ export function useOpportunity(id?: number) {
     }
   }
 
-  async function handleCreate(data: Omit<Opportunity, "id">) {
-    const toastId = appToast.loading("Creating opportunity...");
+  
 
-    try {
-      setLoading(true);
+  // async function handleCreate(data: OpportunitySchema) {
+  //   const toastId = appToast.loading("Creating opportunity...");
 
-      await createOpportunity(data);
+  //   try {
+  //     setLoading(true);
 
-      appToast.dismiss(toastId);
+  //     await createOpportunity(data);
 
-      appToast.success("Opportunity created successfully.");
+  //     appToast.dismiss(toastId);
 
-      await loadOpportunities();
+  //     appToast.success("Opportunity created successfully.");
 
-      router.push("/dashboard/opportunities");
+  //     await loadOpportunities();
 
-      return true;
-    } catch {
-      appToast.dismiss(toastId);
+  //     router.push("/dashboard/opportunities");
 
-      appToast.error("Unable to create opportunity.");
+  //     return true;
+  //   } catch {
+  //     appToast.dismiss(toastId);
 
-      return false;
-    } finally {
-      setLoading(false);
-    }
+  //     appToast.error("Unable to create opportunity.");
+
+  //     return false;
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
+
+  async function handleCreate(data: OpportunitySchema) {
+  const toastId = appToast.loading("Creating opportunity...");
+
+  try {
+    setLoading(true);
+
+    const payload: Omit<Opportunity, "id"> = {
+      ...data,
+
+      posted: new Date().toISOString(),
+
+      applyUrl: data.applyUrl || undefined,
+
+      requirements: data.requirements
+        .split("\n")
+        .map((item) => item.trim())
+        .filter(Boolean),
+    };
+
+    await createOpportunity(payload);
+
+    appToast.dismiss(toastId);
+
+    appToast.success("Opportunity created successfully.");
+
+    await loadOpportunities();
+
+    router.push("/dashboard/opportunities");
+
+    return true;
+  } catch {
+    appToast.dismiss(toastId);
+
+    appToast.error("Unable to create opportunity.");
+
+    return false;
+  } finally {
+    setLoading(false);
   }
+}
 
-  async function handleUpdate(data: Partial<Opportunity>) {
+  async function handleUpdate(data: OpportunitySchema) {
     const toastId = appToast.loading("Updating opportunity...");
 
     try {
@@ -112,6 +156,7 @@ export function useOpportunity(id?: number) {
 
       const payload: Partial<Opportunity> = {
         ...data,
+        applyUrl: data.applyUrl || undefined,
         requirements: data.requirements
           .split("\n")
           .map((item) => item.trim())
