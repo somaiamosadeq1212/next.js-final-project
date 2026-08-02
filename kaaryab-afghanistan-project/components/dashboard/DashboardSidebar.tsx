@@ -6,7 +6,6 @@ import {
   LayoutDashboard,
   Briefcase,
   PlusCircle,
-  Settings,
   X,
 } from "lucide-react";
 
@@ -30,11 +29,6 @@ const links = [
     href: "/dashboard/opportunities/add",
     label: "Add Opportunity",
     icon: PlusCircle,
-  },
-  {
-    href: "/settings",
-    label: "Settings",
-    icon: Settings,
   },
 ];
 

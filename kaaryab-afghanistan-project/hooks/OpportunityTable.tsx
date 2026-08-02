@@ -28,25 +28,6 @@ export function useOpportunityTable() {
   const [status, setStatus] =
   useState("All");
 
-// dynamic filter
-//   const categories = useMemo(() => {
-//   return [
-//     "All",
-//     ...Array.from(
-//       new Set(jobs.map((item) => item.category))
-//     ),
-//   ];
-// }, [jobs]);
-
-// const statuses = useMemo(() => {
-//   return [
-//     "All",
-//     ...Array.from(
-//       new Set(jobs.map((item) => item.status))
-//     ),
-//   ];
-// }, [jobs]);
-
 const categories = useMemo(() => {
   return [
     "All",

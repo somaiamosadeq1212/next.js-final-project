@@ -35,9 +35,9 @@ export default function CategoriesSection({
     Job: <BriefcaseBusiness className="h-8 w-8" />,
     Internship: <GraduationCap className="h-8 w-8" />,
     Scholarship: <Award className="h-8 w-8" />,
-    Course: <BookOpen className="h-8 w-8" />,
-    Remote: <Globe className="h-8 w-8" />,
-    Training: <Rocket className="h-8 w-8" />,
+    "Online Course": <BookOpen className="h-8 w-8" />,
+    "Remote Work": <Globe className="h-8 w-8" />,
+    "Training Program": <Rocket className="h-8 w-8" />,
   };
 
   return (
@@ -70,6 +70,7 @@ export default function CategoriesSection({
                   {categoryIcons[category.title] ?? (
                     <FolderOpen className="h-8 w-8" />
                   )}
+
                 </div>
 
                 <h3 className="mt-8 text-2xl font-bold text-default">

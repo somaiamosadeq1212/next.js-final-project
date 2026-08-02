@@ -110,6 +110,7 @@ export default function FilterBar({
             variant="outline"
             size="sm"
             onClick={resetFilters}
+            className="mx-4"
           >
             <RotateCcw className="mr-2 h-4 w-4" />
             Reset

@@ -49,19 +49,20 @@ export default function Button({
     primary:
       "bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover)]",
 
-    secondary:
-      "bg-surface text-default border border-default hover:bg-gray-100 dark:hover:bg-slate-800",
-
     danger:
       "bg-[var(--color-danger)] text-white hover:opacity-90",
 
-    outline:
-      "bg-transparent border border-default text-default hover:bg-gray-100 dark:hover:bg-slate-800",
     ghost:
       "bg-transparent text-default hover:bg-slate-100 dark:hover:bg-slate-800",
 
     destructive:
       "bg-[var(--color-danger)] text-white hover:opacity-90",
+
+    secondary:
+      "bg-surface text-default border border-default hover:bg-muted active:bg-muted",
+
+    outline:
+      "bg-transparent text-default border border-default hover:bg-muted active:bg-muted",
 
   };
 
@@ -74,6 +75,7 @@ export default function Button({
   };
 
   const classes = cn(
+    "appearance-none",
 
     "inline-flex items-center justify-center gap-2",
 

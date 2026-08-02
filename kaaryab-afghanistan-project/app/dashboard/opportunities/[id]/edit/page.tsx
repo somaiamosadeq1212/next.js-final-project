@@ -4,6 +4,7 @@ import { useParams } from "next/navigation";
 import OpportunityForm from "@/components/forms/OpportunityForm";
 import { useOpportunity } from "@/hooks/useOpportunity";
 import { OpportunitySchema } from "@/lib/validation/opportunity-schema";
+import OpportunityCardSkeleton from "@/components/opportunity/OpportunityCardSkeleton";
 
 export default function EditOpportunityPage() {
   const params = useParams();
@@ -24,9 +25,8 @@ export default function EditOpportunityPage() {
           Edit Opportunity
         </h1>
 
-        <p className="text-muted">
-          Loading...
-        </p>
+        <OpportunityCardSkeleton />
+        
       </div>
     );
   }

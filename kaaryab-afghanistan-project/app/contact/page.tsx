@@ -19,7 +19,7 @@ export default function ContactPage() {
                 <div
                     className="
                         mx-auto
-                        max-w-6xl
+                        max-w-7xl
                         rounded-3xl
                         border
                         border-default

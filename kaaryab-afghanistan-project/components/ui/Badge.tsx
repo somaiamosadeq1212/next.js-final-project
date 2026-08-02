@@ -2,7 +2,14 @@ import { HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
-  variant?: "default" | "secondary";
+  variant?:
+    | "default"
+    | "primary"
+    | "secondary"
+    | "outline"
+    | "ghost"
+    | "danger"
+    | "destructive";
 }
 
 export default function Badge({
@@ -21,14 +28,30 @@ export default function Badge({
         px-3
         py-1
         text-sm
-        font-simibold
+        font-semibold
         transition-colors
         `,
+
         variant === "default" &&
-          "bg-primary-light text-muted",
+          "bg-[var(--color-primary-light)] text-[var(--color-primary)]",
+
+        variant === "primary" &&
+          "bg-[var(--color-primary)] text-white",
 
         variant === "secondary" &&
-          "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-200",
+          "bg-[var(--color-surface)] text-[var(--color-text)] border border-[var(--color-border)]",
+
+        variant === "outline" &&
+          "bg-transparent text-[var(--color-text)] border border-[var(--color-border)]",
+
+        variant === "ghost" &&
+          "bg-transparent text-[var(--color-text)]",
+
+        variant === "danger" &&
+          "bg-[var(--color-danger)] text-white",
+
+        variant === "destructive" &&
+          "bg-[var(--color-danger)] text-white",
 
         className
       )}

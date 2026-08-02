@@ -139,7 +139,6 @@ export default function ChartCard({
               <defs>
                 <linearGradient
                   id={gradientId}
-                  // id="dashboard-bar-gradient"
                   x1="0"
                   y1="0"
                   x2="0"

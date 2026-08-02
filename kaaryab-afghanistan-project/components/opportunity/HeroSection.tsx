@@ -25,7 +25,7 @@ export default function HeroSection() {
             px-8
             py-16
             border-default
-        bg-background
+            bg-background
             shadow-card
             lg:px-16
           "
@@ -53,33 +53,15 @@ export default function HeroSection() {
                 Discover New Opportunities
             </div>
 
-            <h1
-              className="
-                text-3xl
-                font-extrabold
-                leading-tight
-                md:text-6xl
-            "
-            >
+            <h1 className="text-3xl font-extrabold leading-tight md:text-6xl">
               Find Your Next
               <span className="block text-black-primary">
                 Opportunity
               </span>
             </h1>
 
-            <p
-              className="
-                mx-auto
-                mt-6
-                max-w-2xl
-                text-lg
-                block 
-                text-black-primary
-            "
-            >
-              Explore jobs, internships, scholarships,
-              fellowships and remote opportunities
-              across Afghanistan and beyond.
+            <p className="mx-auto mt-6 max-w-2xl text-lg block text-black-primary">
+              Explore jobs, internships, scholarships, fellowships and remote opportunities across Afghanistan and beyond.
             </p>
 
             {/* Opportunity categories */}

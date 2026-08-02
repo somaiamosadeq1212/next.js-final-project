@@ -15,7 +15,7 @@ export default function SavedJobs() {
 
     if (savedOpportunities.length === 0) {
         return (
-            <main className="container mx-auto px-4 py-12">
+            <main className="mx-auto max-w-7xl px-6 py-12">
                 <div
                     className="
                         mx-auto
@@ -67,7 +67,9 @@ export default function SavedJobs() {
     }
 
     return (
-        <main className="container mx-auto px-4 py-10">
+        <main className="bg-background py-10">
+            <div className="mx-auto max-w-7xl px-6">
+
             {/* Hero */}
             <section
                 className="
@@ -148,6 +150,7 @@ export default function SavedJobs() {
 
             </section>
 
+            </div>
         </main>
     );
 }

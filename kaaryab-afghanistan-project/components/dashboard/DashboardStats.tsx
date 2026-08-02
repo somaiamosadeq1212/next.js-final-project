@@ -15,6 +15,7 @@ import {
   getDashboardStats,
   DashboardStats as DashboardStatsType,
 } from "@/lib/dashboard";
+import TableSkeleton from "./TableSkeleton";
 
 export default function DashboardStats() {
   const [stats, setStats] =
@@ -29,12 +30,10 @@ export default function DashboardStats() {
 
     loadStats();
   }, []);
-
+ 
   if (!stats) {
     return (
-      <p className="text-sm text-muted">
-        Loading dashboard...
-      </p>
+      <TableSkeleton />
     );
   }
 

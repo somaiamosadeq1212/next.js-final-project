@@ -184,7 +184,7 @@ export default function Footer() {
                             >
                                 <MapPin className="h-4 w-4 text-primary shrink-0" />
 
-                                <span>Kabul, Afghanistan</span>
+                                <span>Herat, Afghanistan</span>
                             </li>
                         </ul>
                     </address>
