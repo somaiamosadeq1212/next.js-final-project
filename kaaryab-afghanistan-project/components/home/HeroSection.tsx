@@ -73,7 +73,7 @@ export default function HeroSection({
 
         {/* LEFT */}
         <div>
-          <Badge className="px-4 py-2 text-md text-white backdrop-blur">
+          <Badge className="px-4 py-2 text-md text-muted backdrop-blur">
 
             <Sparkles size={18} className="mr-2" />
             Afghanistan Opportunity Platform

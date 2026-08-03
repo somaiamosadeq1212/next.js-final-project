@@ -12,7 +12,34 @@ import Button from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import Input from "@/components/ui/Input";
 
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import {
+  contactSchema,
+  type ContactSchema,
+} from "@/lib/validation/contact-schema";
+
+import { toast } from "sonner";
+
 export default function ContactPage() {
+    const {
+  register,
+  handleSubmit,
+  reset,
+  formState: { errors },
+} = useForm<ContactSchema>({
+  resolver: zodResolver(contactSchema),
+});
+
+const onSubmit = (data: ContactSchema) => {
+  console.log(data);
+
+  toast.success("Your message has been sent successfully.");
+
+  reset();
+};
+
     return (
         <main>
             <section className="bg-background py-14 lg:py-20 transition-theme">
@@ -127,25 +154,50 @@ export default function ContactPage() {
                                 </p>
                             </div>
 
-                            <form className="space-y-6" aria-label="Contact form">
+                            <form
+                                onSubmit={handleSubmit(onSubmit)}
+                                className="space-y-6"
+                                aria-label="Contact form"
+                                >
                                 <div className="grid gap-6 md:grid-cols-2">
 
                                     <Input
                                         label="Full Name"
                                         placeholder="Your full name"
+                                        {...register("fullName")}
                                     />
+
+                                    {errors.fullName && (
+                                    <p className="mt-2 text-sm text-red-500">
+                                        {errors.fullName.message}
+                                    </p>
+                                    )}
 
                                     <Input
                                         type="email"
                                         label="Email"
                                         placeholder="you@example.com"
+                                        {...register("email")}
                                     />
+
+                                    {errors.email && (
+                                    <p className="mt-2 text-sm text-red-500">
+                                        {errors.email.message}
+                                    </p>
+                                    )}
                                 </div>
 
                                 <Input
                                     label="Subject"
                                     placeholder="Message subject"
+                                    {...register("subject")}
                                 />
+
+                                {errors.subject && (
+                                <p className="mt-2 text-sm text-red-500">
+                                    {errors.subject.message}
+                                </p>
+                                )}
 
                                 <div>
                                     <label
@@ -164,6 +216,7 @@ export default function ContactPage() {
                                         id="message"
                                         rows={6}
                                         placeholder="Write your message..."
+                                        {...register("message")}
                                         className="
                                         w-full
                                         rounded-xl
@@ -178,6 +231,12 @@ export default function ContactPage() {
                                         focus-visible:ring-4
                                         focus-visible:ring-primary/10
                                     "/>
+
+                                    {errors.message && (
+                                    <p className="mt-2 text-sm text-red-500">
+                                        {errors.message.message}
+                                    </p>
+                                    )}
                                 </div>
 
                                 <Button

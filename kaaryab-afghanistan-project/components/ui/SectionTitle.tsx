@@ -19,7 +19,7 @@ export default function SectionTitle({
       <div className="mb-2 flex items-center gap-2">
         {icon}
 
-        <h2 className="text-3xl font-bold text-default">
+        <h2 className="text-3xl font-bold text-default mt-15 mb-5">
           {title}
         </h2>
       </div>

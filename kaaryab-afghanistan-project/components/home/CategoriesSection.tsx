@@ -42,7 +42,7 @@ export default function CategoriesSection({
 
   return (
     <section className="bg-background py-24">
-      <div className="mx-auto max-w-7xl px-6 font-bold text-lg">
+      <div className="mx-auto max-w-7xl px-6 font-bold text-lg text-muted">
         <SectionHeader
           badge="Categories"
           title="Browse by Category"

@@ -25,10 +25,6 @@ export default function SectionHeader({
 
       {badge && <Badge>{badge}</Badge>}
 
-      {/* <SectionTitle>
-        {title}
-      </SectionTitle> */}
-
       <SectionTitle title={title} />
 
       {description && (

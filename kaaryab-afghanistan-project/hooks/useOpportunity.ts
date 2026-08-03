@@ -13,7 +13,6 @@ import {
 
 import type { OpportunitySchema } from "@/lib/validation/opportunity-schema";
 import { Opportunity } from "@/components/types/opportunity";
-// import { OpportunityFormValues } from "@/lib/validation/opportunity-schema";
 import { appToast } from "@/lib/toast";
 
 export function useOpportunity(id?: number) {
@@ -76,36 +75,6 @@ export function useOpportunity(id?: number) {
       setLoading(false);
     }
   }
-
-  
-
-  // async function handleCreate(data: OpportunitySchema) {
-  //   const toastId = appToast.loading("Creating opportunity...");
-
-  //   try {
-  //     setLoading(true);
-
-  //     await createOpportunity(data);
-
-  //     appToast.dismiss(toastId);
-
-  //     appToast.success("Opportunity created successfully.");
-
-  //     await loadOpportunities();
-
-  //     router.push("/dashboard/opportunities");
-
-  //     return true;
-  //   } catch {
-  //     appToast.dismiss(toastId);
-
-  //     appToast.error("Unable to create opportunity.");
-
-  //     return false;
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }
 
   async function handleCreate(data: OpportunitySchema) {
   const toastId = appToast.loading("Creating opportunity...");
@@ -212,14 +181,6 @@ export function useOpportunity(id?: number) {
       setLoading(false);
     }
   }
-
-  // async function refresh() {
-  //   if (id) {
-  //     await loadOpportunity();
-  //   } else {
-  //     await loadOpportunities();
-  //   }
-  // }
 
   return {
     loading,

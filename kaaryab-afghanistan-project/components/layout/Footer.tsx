@@ -62,7 +62,7 @@ export default function Footer() {
                             <Logo />
                         </div>
 
-                        <p className="mt-5 max-w-xs text-sm leading-7 text-muted">
+                        <p className="mt-5 ml-5 sm:ml-10 max-w-sm text-sm leading-7 text-muted">
                             KaarYab Afghanistan helps students, graduates and professionals discover
                             jobs, internships, scholarships and remote opportunities.
                         </p>

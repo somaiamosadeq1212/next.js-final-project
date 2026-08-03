@@ -397,9 +397,10 @@ export default function OpportunityDetailsClient({
                 application before the deadline.
               </p>
 
-              <div className="space-y-3">
+              <div className="flex items-center gap-3 flex-wrap">
 
                 <Button
+                className="px-4"
                   onClick={() =>
                     toast.info(
                       "Application feature will be available in the production version."

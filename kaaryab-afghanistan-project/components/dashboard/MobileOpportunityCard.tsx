@@ -19,7 +19,7 @@ export default function MobileOpportunityCard({
   return (
     <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
 
-      <div className="flex items-start justify-between gap-3">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
 
         <div className="min-w-0 flex-1">
 
@@ -33,19 +33,19 @@ export default function MobileOpportunityCard({
 
         </div>
 
-        <Badge className="shrink-0">
+        <Badge className="w-fit shrink-0">
           {opportunity.category}
         </Badge>
 
       </div>
 
-      <div className="mt-5 flex items-center justify-between gap-3">
+      <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
 
         <span className="text-sm text-muted-foreground">
           {opportunity.deadline}
         </span>
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
 
           <Link href={`/opportunities/${opportunity.id}`}>
             <Button
