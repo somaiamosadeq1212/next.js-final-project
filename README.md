@@ -151,79 +151,79 @@ http://localhost:3000
 
 ###  Home Page
 
-![Home Sections](screenshots/home-page.jpg)
+![Home Sections](kaaryab-afghanistan-project/screenshots/home-page.jpg)
 
 ---
 
 ###  Opportunities Page
 
-![Opportunities](screenshots/opportunities.jpg)
+![Opportunities](kaaryab-afghanistan-project/screenshots/opportunities.jpg)
 
 ---
 
 ###  Search & Filter
 
-![Search & Filter](screenshots/search&filter.jpg)
+![Search & Filter](kaaryab-afghanistan-project/screenshots/search&filter.jpg)
 
 ---
 
 ###  Filter by Category
 
-![Filter](screenshots/filter.jpg)
+![Filter](kaaryab-afghanistan-project/screenshots/filter.jpg)
 
 ---
 
 ###  Opportunity Details
 
-![Opportunity Details](screenshots/details.jpg)
+![Opportunity Details](kaaryab-afghanistan-project/screenshots/details.jpg)
 
 ---
 
 ###  Saved Opportunities
 
-![Saved Opportunities](screenshots/saved.jpg)
+![Saved Opportunities](kaaryab-afghanistan-project/screenshots/saved.jpg)
 
 ---
 
 ###  Dashboard Overview
 
-![Dashboard](screenshots/dashboard.jpg)
+![Dashboard](kaaryab-afghanistan-project/screenshots/dashboard.jpg)
 
 ---
 
 ###  Dashboard Opportunities
 
-![Dashboard Opportunities](screenshots/dashboard-opportunities.jpg)
+![Dashboard Opportunities](kaaryab-afghanistan-project/screenshots/dashboard-opportunities.jpg)
 
 ---
 
-### 👁️ Dashboard Opportunity Details
+###  Dashboard Opportunity Details
 
-![Dashboard Opportunity](screenshots/dashboard-opportunity.jpg)
+![Dashboard Opportunity](kaaryab-afghanistan-project/screenshots/dashboard-opportunity.jpg)
 
 ---
 
 ###  Add Opportunity
 
-![Add Opportunity](screenshots/add.jpg)
+![Add Opportunity](kaaryab-afghanistan-project/screenshots/add.jpg)
 
 ---
 
 ###  Delete Opportunity
 
-![Delete Opportunity](screenshots/delete.jpg)
+![Delete Opportunity](kaaryab-afghanistan-project/screenshots/delete.jpg)
 
 ---
 
 ###  About Page
 
-![About Page](screenshots/about.jpg)
+![About Page](kaaryab-afghanistan-project/screenshots/about.jpg)
 
 ---
 
 ###  Contact Page
 
-![Contact Page](screenshots/contact.jpg)
+![Contact Page](kaaryab-afghanistan-project/screenshots/contact.jpg)
 
 ---
 
